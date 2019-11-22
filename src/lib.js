@@ -60,7 +60,7 @@ function jwtSign (jwk, payload = {}, header = {}, exp = 600, alg = 'RS256') {
 
 /**
  * Verify that jwt is valid (time) and correctly signed and return the parsed value,
- * in case of not valid will throw and Error
+ * in case of not valid will throw and Error.
  * @param {*} jwt The string jwt to be verified.
  * @param {*} pubkey Public key string to verify the signature. (Pem format)
  * @param {*} algorithm Jwt should be signed with this algorithm. Default value 'RS256'
@@ -73,7 +73,7 @@ function jwtVerify (jwt, pubkey, algorithm = 'RS256') {
     alg: [algorithm],
     gracePeriod: 5
   })
-  if (!valid) { throw new Error('Invalid JWT') }
+  if (!valid) { throw new Error('jwtVerify: Invalid JWT') }
   const parsed = rs.jws.JWS.parse(jwt)
   return {
     header: parsed.headerObj,
