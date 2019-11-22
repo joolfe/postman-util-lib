@@ -58,8 +58,27 @@ function jwtSign (jwk, payload = {}, header = {}, exp = 600, alg = 'RS256') {
   return rs.jws.JWS.sign(alg, sHeader, sPayload, prvKey)
 }
 
-function jwtVerify (jwt, jwk) {
-
+/**
+ * Verify that jwt is valid (time) and correctly signed and return the parsed value,
+ * in case of not valid will throw and Error
+ * @param {*} jwt The string jwt to be verified.
+ * @param {*} pubkey Public key string to verify the signature. (Pem format)
+ * @param {*} algorithm Jwt should be signed with this algorithm. Default value 'RS256'
+ */
+function jwtVerify (jwt, pubkey, algorithm = 'RS256') {
+  validate(!(typeof jwt === 'string'), 'jwtVerify: jwt param is mandatory and should be a jwt in string format')
+  validate(!(typeof pubkey === 'string'), 'jwtVerify: pubkey param is mandatory and should be a PEM string.')
+  const publicKey = rs.KEYUTIL.getKey(pubkey)
+  const valid = rs.jws.JWS.verifyJWT(jwt, publicKey, {
+    alg: [algorithm],
+    gracePeriod: 5
+  })
+  if (!valid) { throw new Error('Invalid JWT') }
+  const parsed = rs.jws.JWS.parse(jwt)
+  return {
+    header: parsed.headerObj,
+    payload: parsed.payloadObj
+  }
 }
 
 /**

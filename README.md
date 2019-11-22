@@ -7,6 +7,7 @@ A crypto utility library to be used from Postman Pre-request scripts and Tests s
 - Create jwtVerify method
 - Check is rsassign is available as variables or not.
 - Add coverage to the test
+- Add more test for mssing parameters, defaults...
 - Minimize bundle to make smaller the files. 
 - Create integration test to do an eval and use.
 - Create script process to test, buils...

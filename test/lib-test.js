@@ -10,7 +10,7 @@ const jsonwebtoken = require('jsonwebtoken')
 
 const jwkKey = require('./resources/jwk.json')
 const jwkPubKey = require('./resources/jwkPublic.json')
-const pemPubKey = fs.readFileSync('./test/resources/publicKey.pem')
+const pemPubKey = fs.readFileSync('./test/resources/publicKey.pem', 'utf8')
 
 const fromBase64 = (base64) => base64.replace(/=/g, '').replace(/\+/g, '-').replace(/\//g, '_')
 const encodeBuffer = (buf) => fromBase64(buf.toString('base64'))
@@ -107,5 +107,75 @@ describe('Postman Library unit test', function () {
       const sha256result = lib.sha256('justastringtest')
       assert.strictEqual(sha256result, 'bada5cf2975ed1eec9ac725316a8299dfa4d19bc2f2816644ba3bd2b99f0f0a1')
     })
+  })
+
+  describe('jwtVerify()', function () {
+    it('Should return a parsed JWT when valid', function () {
+      const jwt = lib.jwtSign(jwkKey, {
+        client_id: 'bb2d95df-ae2e-4f22-a6ab-958d3591f1cf',
+        iss: 'bb2d95df-ae2e-4f22-a6ab-958d3591f1cf',
+        aud: 'http://audience.test.com'
+      })
+      const decodedJWT = lib.jwtVerify(jwt, pemPubKey)
+      assert(decodedJWT.payload)
+      assert(decodedJWT.header)
+      assert.strictEqual(decodedJWT.payload.client_id, 'bb2d95df-ae2e-4f22-a6ab-958d3591f1cf')
+      assert.strictEqual(decodedJWT.payload.iss, 'bb2d95df-ae2e-4f22-a6ab-958d3591f1cf')
+      assert.strictEqual(decodedJWT.payload.aud, 'http://audience.test.com')
+    })
+
+    it('Should fail when no jwt passed', function () {
+      assert.throws(
+        () => {
+          lib.jwtVerify(undefined, pemPubKey)
+        },
+        {
+          name: 'Error',
+          message: 'jwtVerify: jwt param is mandatory and should be a jwt in string format'
+        }
+      )
+    })
+
+    it('Should fail when no pubkey passed', function () {
+      assert.throws(
+        () => {
+          lib.jwtVerify('Notvalidated')
+        },
+        {
+          name: 'Error',
+          message: 'jwtVerify: pubkey param is mandatory and should be a PEM string.'
+        }
+      )
+    })
+
+    it('Should fail when jwt is not a string', function () {
+      assert.throws(
+        () => {
+          lib.jwtVerify(234567, pemPubKey)
+        },
+        {
+          name: 'Error',
+          message: 'jwtVerify: jwt param is mandatory and should be a jwt in string format'
+        }
+      )
+    })
+
+    it('Should fail when pubkey is not a string', function () {
+      assert.throws(
+        () => {
+          lib.jwtVerify('Notvalidated', 2763763763)
+        },
+        {
+          name: 'Error',
+          message: 'jwtVerify: pubkey param is mandatory and should be a PEM string.'
+        }
+      )
+    })
+
+    it('Should fail when expired jwt')
+
+    it('Should fail when not valid signature jwt')
+
+    it('Should validate with not default alg')
   })
 })
