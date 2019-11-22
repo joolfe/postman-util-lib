@@ -4,6 +4,10 @@ A crypto utility library to be used from Postman Pre-request scripts and Tests s
 
 # ROADMAP
 
+- Refactor test and split in different files
+- Create a util for test with constant and method
+- Add check of all the fields in my methods.
+- Create a method for the other authentication method for openid.
 - Check is rsassign is available as variables or not.
 - Add coverage to the test
 - Add more test for mssing parameters, defaults...
@@ -21,3 +25,9 @@ A crypto utility library to be used from Postman Pre-request scripts and Tests s
 - Explain where is going to be published.
 - Provided methods.
 - Tutorial about how to use it with postman collection examples.
+- Create gifs to show how to use it.
+- Put a sections whit typicall receipts (create a jwt request, validate a id token....)
+
+# Develop
+
+Node 10

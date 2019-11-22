@@ -5,7 +5,7 @@
   "main": "lib.js",
   "scripts": {
     "test": "nyc npm run test:unit",
-    "test:unit": "mocha",
+    "test:unit": "mocha test/lib-test.js",
     "build": "browserify src/lib.js > dist/bundle.js -s pmlib",
     "dev": "npm run build && node src/builtin-server.js"
   },
