@@ -107,36 +107,28 @@ describe('Postman Library unit test', function () {
 
     it('Should fail when no jwt passed', function () {
       assert.throws(
-        () => {
-          lib.jwtVerify(undefined, pemPubKey)
-        },
+        () => { lib.jwtVerify(undefined, pemPubKey) },
         error('Error', 'jwtVerify: jwt param is mandatory and should be a jwt in string format')
       )
     })
 
     it('Should fail when no pubkey passed', function () {
       assert.throws(
-        () => {
-          lib.jwtVerify('Notvalidated')
-        },
+        () => { lib.jwtVerify('Notvalidated') },
         error('Error', 'jwtVerify: pubkey param is mandatory and should be a PEM string.')
       )
     })
 
     it('Should fail when jwt is not a string', function () {
       assert.throws(
-        () => {
-          lib.jwtVerify(234567, pemPubKey)
-        },
+        () => { lib.jwtVerify(234567, pemPubKey) },
         error('Error', 'jwtVerify: jwt param is mandatory and should be a jwt in string format')
       )
     })
 
     it('Should fail when pubkey is not a string', function () {
       assert.throws(
-        () => {
-          lib.jwtVerify('Notvalidated', 2763763763)
-        },
+        () => { lib.jwtVerify('Notvalidated', 2763763763) },
         error('Error', 'jwtVerify: pubkey param is mandatory and should be a PEM string.')
       )
     })
