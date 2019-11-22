@@ -2370,9 +2370,41 @@ exports.lang = KJUR.lang;
 
 }).call(this,require("buffer").Buffer)
 },{"buffer":2}],5:[function(require,module,exports){
+var url = 'sOwnPropMN49CEiq-hXvHJdSymlFURTag61GQfuD8YIWz2Zk5xKB7LV30_Abject'
+
+/**
+ * Generate URL-friendly unique ID. This method use non-secure predictable
+ * random generator with bigger collision probability.
+ *
+ * @param {number} [size=21] The number of symbols in ID.
+ *
+ * @return {string} Random string.
+ *
+ * @example
+ * const nanoid = require('nanoid/non-secure')
+ * model.id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqL"
+ *
+ * @name nonSecure
+ * @function
+ */
+module.exports = function (size) {
+  size = size || 21
+  var id = ''
+  while (size--) {
+    id += url[Math.random() * 64 | 0]
+  }
+  return id
+}
+
+},{}],6:[function(require,module,exports){
 'use strict'
 
-var rs = require('jsrsasign')
+const rs = require('jsrsasign')
+const nanoid = require('nanoid/non-secure')
+
+function validate (assertion, msg) {
+  if (assertion) { throw new Error(msg) }
+}
 
 function pkceChallenge () {
   const randomBytes = rs.crypto.Util.getRandomHexOfNbytes(32)
@@ -2385,7 +2417,11 @@ function pkceChallenge () {
   }
 }
 
-function jwtSign (jwk, exp, alg, payload, header = {}) {
+function jwtSign (jwk, exp = 0, alg = 'RS256', payload = {}, header = {}) {
+  validate(!jwk, 'jwtSign: jwt param is mandatory')
+  const prvKey = rs.KEYUTIL.getKey(jwk)
+  validate(!prvKey.isPrivate, 'jwtSign: jwt param should contain a private key')
+
   // Calculate time variables
   var currentTime = Math.ceil((new Date()).getTime() / 1000) // the current time in seconds
   var expirationTime = currentTime + exp
@@ -2397,22 +2433,29 @@ function jwtSign (jwk, exp, alg, payload, header = {}) {
       iat: currentTime - 5,
       nbf: currentTime - 5,
       exp: expirationTime,
-      jti: 'shishishiYhuJyHjuhsyHujYHuhHYH'
+      jti: nanoid()
     })
 
   const sHeader = JSON.stringify(jwtHeader)
   const sPayload = JSON.stringify(jwtBody)
-  const prvKey = rs.KEYUTIL.getKey(jwk)
-
-  console(prvKey)
 
   return rs.jws.JWS.sign(alg, sHeader, sPayload, prvKey)
 }
 
-module.exports = {
-  pkceChallenge,
-  jwtSign
+function jwtVerify (jwt, jwk) {
+
 }
 
-},{"jsrsasign":4}]},{},[5])(5)
+function sha256 (string) {
+
+}
+
+module.exports = {
+  pkceChallenge,
+  jwtSign,
+  jwtVerify,
+  sha256
+}
+
+},{"jsrsasign":4,"nanoid/non-secure":5}]},{},[6])(6)
 });

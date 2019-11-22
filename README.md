@@ -5,9 +5,10 @@ A crypto utility library to be used from Postman Pre-request scripts and Tests s
 
 # ROADMAP
 
-- Create a builtin server for develop and test easyly from postman in local
 - Create jwtVerify method
 - Create an easy sha256() method
+- Check is rsassign is available as variables or not.
+- Minimize bundle to make smaller the files. 
 - Create integration test to do an eval and use.
 - Create script process to test, buils...
 - Create docs to explain how to use it

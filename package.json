@@ -5,7 +5,8 @@
   "main": "lib.js",
   "scripts": {
     "test": "mocha",
-    "build": "browserify src/lib.js > dist/bundle.js -s pmlib"
+    "build": "browserify src/lib.js > dist/bundle.js -s pmlib",
+    "dev": "npm run build && node src/builtin-server.js"
   },
   "author": "",
   "license": "MIT",
@@ -15,6 +16,8 @@
   },
   "devDependencies": {
     "browserify": "^16.5.0",
+    "jsonwebtoken": "^8.5.1",
+    "jwk-to-pem": "^2.0.1",
     "mocha": "^6.2.2",
     "standard": "^14.3.1"
   }

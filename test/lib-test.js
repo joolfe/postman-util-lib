@@ -4,11 +4,15 @@ const lib = require('../src/lib.js')
 const { describe, it } = require('mocha')
 const assert = require('assert')
 const crypto = require('crypto')
+const fs = require('fs')
+// We use another library to test just to be sure our code works
+const jsonwebtoken = require('jsonwebtoken')
+
 const jwkKey = require('./resources/jwk.json')
-const jwkKeyPub = require('./resources/jwkPublic.json')
+const jwkPubKey = require('./resources/jwkPublic.json')
+const pemPubKey = fs.readFileSync('./test/resources/publicKey.pem')
 
 const fromBase64 = (base64) => base64.replace(/=/g, '').replace(/\+/g, '-').replace(/\//g, '_')
-
 const encodeBuffer = (buf) => fromBase64(buf.toString('base64'))
 
 describe('Postman Library unit test', function () {
@@ -38,7 +42,7 @@ describe('Postman Library unit test', function () {
       )
     })
 
-    it('Should fail when jwk dont have the correct format', function () {
+    it("Should fail when jwk don't have the correct format", function () {
       assert.throws(
         () => {
           lib.jwtSign('{ "hi": "hi"}', 3000, 'RS256', {
@@ -51,10 +55,10 @@ describe('Postman Library unit test', function () {
       )
     })
 
-    it('Should fail when jwk dont have a private key', function () {
+    it("Should fail when jwk don't have a private key", function () {
       assert.throws(
         () => {
-          lib.jwtSign(jwkKeyPub, 3000, 'RS256', {
+          lib.jwtSign(jwkPubKey, 3000, 'RS256', {
             client_id: 'bb2d95df-ae2e-4f22-a6ab-958d3591f1cf',
             iss: 'bb2d95df-ae2e-4f22-a6ab-958d3591f1cf',
             aud: 'http://audience.test.com'
@@ -67,12 +71,20 @@ describe('Postman Library unit test', function () {
       )
     })
 
-    it('Should generate signed jwt correctly', function () {
+    it.only('Should generate signed jwt correctly', function () {
       const jwt = lib.jwtSign(jwkKey, 3000, 'RS256', {
         client_id: 'bb2d95df-ae2e-4f22-a6ab-958d3591f1cf',
         iss: 'bb2d95df-ae2e-4f22-a6ab-958d3591f1cf',
         aud: 'http://audience.test.com'
       })
+      const decodeJwt = jsonwebtoken.verify(jwt, pemPubKey)
+      assert.strictEqual(decodeJwt.client_id, 'bb2d95df-ae2e-4f22-a6ab-958d3591f1cf')
+      assert.strictEqual(decodeJwt.iss, 'bb2d95df-ae2e-4f22-a6ab-958d3591f1cf')
+      assert.strictEqual(decodeJwt.aud, 'http://audience.test.com')
+      assert(decodeJwt.iat)
+      assert(decodeJwt.nbf)
+      assert(decodeJwt.exp)
+      assert(decodeJwt.jti)
     })
   })
 })

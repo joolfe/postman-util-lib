@@ -1,7 +1,7 @@
 'use strict'
 
 const rs = require('jsrsasign')
-const nanoid = require('nanoid')
+const nanoid = require('nanoid/non-secure')
 
 function validate (assertion, msg) {
   if (assertion) { throw new Error(msg) }
@@ -14,7 +14,8 @@ function pkceChallenge () {
   const codeChallenge = rs.hextob64u(hashResult)
   return {
     code_verifier: codeVerifier,
-    code_challenge: codeChallenge
+    code_challenge: codeChallenge,
+    code_challenge_method: 'S256'
   }
 }
 
