@@ -4,7 +4,6 @@ A crypto utility library to be used from Postman Pre-request scripts and Tests s
 
 # ROADMAP
 
-- Create jwtVerify method
 - Check is rsassign is available as variables or not.
 - Add coverage to the test
 - Add more test for mssing parameters, defaults...

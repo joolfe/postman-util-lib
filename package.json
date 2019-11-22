@@ -4,7 +4,8 @@
   "description": "",
   "main": "lib.js",
   "scripts": {
-    "test": "mocha",
+    "test": "nyc npm run test:unit",
+    "test:unit": "mocha",
     "build": "browserify src/lib.js > dist/bundle.js -s pmlib",
     "dev": "npm run build && node src/builtin-server.js"
   },
@@ -19,6 +20,19 @@
     "jsonwebtoken": "^8.5.1",
     "jwk-to-pem": "^2.0.1",
     "mocha": "^6.2.2",
+    "nyc": "^14.1.1",
     "standard": "^14.3.1"
+  },
+  "nyc": {
+    "all": true,
+    "include": [
+      "src/**/*.js",
+      "test/**/*.js"
+    ],
+    "exclude": [],
+    "reporter": [
+      "html",
+      "text"
+    ]
   }
 }

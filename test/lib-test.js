@@ -5,7 +5,6 @@ const { describe, it } = require('mocha')
 const assert = require('assert')
 const crypto = require('crypto')
 const fs = require('fs')
-// We use another library to test just to be sure our code works
 const jsonwebtoken = require('jsonwebtoken')
 
 const jwkKey = require('./resources/jwk.json')
