@@ -29,7 +29,7 @@ describe('Postman Library unit test', function () {
     it('Should fail when no jwk provided', function () {
       assert.throws(
         () => {
-          lib.jwtSign(undefined, 3000, 'RS256', {
+          lib.jwtSign(undefined, {
             client_id: 'bb2d95df-ae2e-4f22-a6ab-958d3591f1cf',
             iss: 'bb2d95df-ae2e-4f22-a6ab-958d3591f1cf',
             aud: 'http://audience.test.com'
@@ -45,7 +45,7 @@ describe('Postman Library unit test', function () {
     it("Should fail when jwk don't have the correct format", function () {
       assert.throws(
         () => {
-          lib.jwtSign('{ "hi": "hi"}', 3000, 'RS256', {
+          lib.jwtSign('{ "hi": "hi"}', {
             client_id: 'bb2d95df-ae2e-4f22-a6ab-958d3591f1cf',
             iss: 'bb2d95df-ae2e-4f22-a6ab-958d3591f1cf',
             aud: 'http://audience.test.com'
@@ -58,7 +58,7 @@ describe('Postman Library unit test', function () {
     it("Should fail when jwk don't have a private key", function () {
       assert.throws(
         () => {
-          lib.jwtSign(jwkPubKey, 3000, 'RS256', {
+          lib.jwtSign(jwkPubKey, {
             client_id: 'bb2d95df-ae2e-4f22-a6ab-958d3591f1cf',
             iss: 'bb2d95df-ae2e-4f22-a6ab-958d3591f1cf',
             aud: 'http://audience.test.com'
@@ -71,8 +71,8 @@ describe('Postman Library unit test', function () {
       )
     })
 
-    it.only('Should generate signed jwt correctly', function () {
-      const jwt = lib.jwtSign(jwkKey, 3000, 'RS256', {
+    it('Should generate signed jwt correctly', function () {
+      const jwt = lib.jwtSign(jwkKey, {
         client_id: 'bb2d95df-ae2e-4f22-a6ab-958d3591f1cf',
         iss: 'bb2d95df-ae2e-4f22-a6ab-958d3591f1cf',
         aud: 'http://audience.test.com'
@@ -85,6 +85,27 @@ describe('Postman Library unit test', function () {
       assert(decodeJwt.nbf)
       assert(decodeJwt.exp)
       assert(decodeJwt.jti)
+    })
+  })
+
+  describe('clientAssertionJwt()', function () {
+    it("Should generate 'private_key_jwt' assertion correctly", function () {
+      const jwt = lib.clientAssertionJwt(jwkKey, 'bb2d95df-ae2e-4f22-a6ab-958d3591f1cf', 'http://audience.test.com')
+      const decodeJwt = jsonwebtoken.verify(jwt, pemPubKey)
+      assert.strictEqual(decodeJwt.client_id, 'bb2d95df-ae2e-4f22-a6ab-958d3591f1cf')
+      assert.strictEqual(decodeJwt.iss, 'bb2d95df-ae2e-4f22-a6ab-958d3591f1cf')
+      assert.strictEqual(decodeJwt.aud, 'http://audience.test.com')
+      assert(decodeJwt.iat)
+      assert(decodeJwt.nbf)
+      assert(decodeJwt.exp)
+      assert(decodeJwt.jti)
+    })
+  })
+
+  describe('sha256()', function () {
+    it("Should generate a 'sha256' hash correctly", function () {
+      const sha256result = lib.sha256('justastringtest')
+      assert.strictEqual(sha256result, 'bada5cf2975ed1eec9ac725316a8299dfa4d19bc2f2816644ba3bd2b99f0f0a1')
     })
   })
 })

@@ -2413,7 +2413,8 @@ function pkceChallenge () {
   const codeChallenge = rs.hextob64u(hashResult)
   return {
     code_verifier: codeVerifier,
-    code_challenge: codeChallenge
+    code_challenge: codeChallenge,
+    code_challenge_method: 'S256'
   }
 }
 

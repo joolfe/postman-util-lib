@@ -8,7 +8,6 @@ const port = 9090
 const bundlePath = path.join(__dirname, '../dist/bundle.js')
 
 http.createServer(function (req, res) {
-  console.log('request starting...')
   fs.readFile(bundlePath, (err, data) => {
     if (err) {
       res.statusCode = 500
