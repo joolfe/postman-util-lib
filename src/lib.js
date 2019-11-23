@@ -6,6 +6,40 @@ const { valStringOrObject, valString, valObject, valNumber } = require('./valida
 
 const SHA256 = 'sha256'
 const DEFAULT_ALG = 'RS256'
+const DEFAULT_ALG_H = 'HS256'
+
+/**
+ * create JWS with the provided data
+ * @param {*} secret A key object or sectret to sign the jwt
+ * @param {*} payload The jwt payload fields
+ * @param {*} header Additional headers fields for jwt
+ * @param {*} exp The expiration time in seconds, default value 10min (600seg)
+ * @param {*} alg The algorithm used to sign the jwt, default value 'RS256'
+ */
+function createJws (secret, payload, header, exp, alg) {
+  valObject(payload, 'payload')
+  valObject(header, 'header')
+  valNumber(exp, 'exp')
+
+  // Calculate time variables
+  var currentTime = Math.ceil((new Date()).getTime() / 1000) // the current time in seconds
+  var expirationTime = currentTime + exp
+
+  const jwtHeader = Object.assign(header, { typ: 'JWT', alg })
+
+  const jwtBody = Object.assign(payload,
+    {
+      iat: currentTime - 5,
+      nbf: currentTime - 5,
+      exp: expirationTime,
+      jti: nanoid()
+    })
+
+  const sHeader = JSON.stringify(jwtHeader)
+  const sPayload = JSON.stringify(jwtBody)
+
+  return rs.jws.JWS.sign(alg, sHeader, sPayload, secret)
+}
 
 /**
  * Generate a PKCE as described in specification https://tools.ietf.org/html/rfc7636
@@ -34,29 +68,8 @@ function pkceChallenge () {
 function jwtSign (jwk = '', payload = {}, header = {}, exp = 600, alg = DEFAULT_ALG) {
   try {
     valStringOrObject(jwk, 'jwk')
-    valObject(payload, 'payload')
-    valObject(header, 'header')
-    valNumber(exp, 'exp')
     const prvKey = rs.KEYUTIL.getKey(jwk)
-
-    // Calculate time variables
-    var currentTime = Math.ceil((new Date()).getTime() / 1000) // the current time in seconds
-    var expirationTime = currentTime + exp
-
-    const jwtHeader = Object.assign(header, { typ: 'JWT', alg })
-
-    const jwtBody = Object.assign(payload,
-      {
-        iat: currentTime - 5,
-        nbf: currentTime - 5,
-        exp: expirationTime,
-        jti: nanoid()
-      })
-
-    const sHeader = JSON.stringify(jwtHeader)
-    const sPayload = JSON.stringify(jwtBody)
-
-    return rs.jws.JWS.sign(alg, sHeader, sPayload, prvKey)
+    return createJws(prvKey, payload, header, exp, alg)
   } catch (err) {
     const msg = (typeof err === 'string') ? err : err.message
     throw new Error(`[jwtSign] ${msg}`)
@@ -86,8 +99,7 @@ function jwtVerify (jwt, pubkey, algorithm = DEFAULT_ALG) {
       payload: parsed.payloadObj
     }
   } catch (err) {
-    const msg = (typeof err === 'string') ? err : err.message
-    throw new Error(`[jwtVerify] ${msg}`)
+    throw new Error(`[jwtVerify] ${err.message}`)
   }
 }
 
@@ -116,10 +128,33 @@ function clientAssertPrivateKey (jwk, clientID, aud, exp = 600, alg = DEFAULT_AL
   }, {}, exp, alg)
 }
 
+/**
+ * Generate a signed jwt for use 'client_secret_jwt' client authentication as describe in Section 9 of
+ * OIDC https://openid.net/specs/openid-connect-core-1_0.html 
+ * @param {*} secret A client secret to sign the JWT
+ * @param {*} clientID The client_id of the OAuth Client.
+ * @param {*} aud The aud (audience) Claim. Value that identifies the Authorization Server as an intended audience.
+ * @param {*} exp The expiration time in seconds, default value 10min (600seg)
+ * @param {*} alg The algorithm used to sign the jwt, default value 'HS256'
+ */
+function clientAssertSecret (secret, clientID, aud, exp = 600, alg = DEFAULT_ALG_H) {
+  try {
+    valString(secret, 'secret')
+    return createJws(secret, {
+      client_id: clientID,
+      iss: clientID,
+      aud: aud
+    }, {}, exp, alg)
+  } catch (err) {
+    throw new Error(`[clientAssertSecret] ${err.message}`)
+  }
+}
+
 module.exports = {
   pkceChallenge,
   jwtSign,
   jwtVerify,
   sha256,
-  clientAssertPrivateKey
+  clientAssertPrivateKey,
+  clientAssertSecret
 }

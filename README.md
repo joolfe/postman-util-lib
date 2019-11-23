@@ -4,8 +4,10 @@ A crypto utility library to be used from Postman Pre-request scripts and Tests s
 
 # ROADMAP
 
-- Add check of all the fields in my methods.
 - Create a method for the other authentication method for openid.
+- Create method for 'client_secret_jwt'
+- Create test for builtin server
+- Review coverage and test all the missing parts
 - Check is rsassign is available as variables or not.
 - Add coverage to the test
 - Add more test for mssing parameters, defaults...

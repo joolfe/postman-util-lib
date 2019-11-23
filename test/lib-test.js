@@ -6,6 +6,7 @@ describe('Postman Library unit test', function () {
   require('./jwtSign')
   require('./jwtVerify')
   require('./clientAssertPrivateKey')
+  require('./clientAssertSecret')
   require('./pkceChallenge')
   require('./sha256')
 })

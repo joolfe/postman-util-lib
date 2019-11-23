@@ -28,6 +28,13 @@ describe('jwtSign()', function () {
     assert(decodeJwt.jti)
   })
 
+  it('Should fail when no jwk provided', function () {
+    assert.throws(
+      () => lib.jwtSign(),
+      expectError('Error', '[jwtSign] not supported argument')
+    )
+  })
+
   it('Should fail when null jwk provided', function () {
     assert.throws(
       () => lib.jwtSign(null),
