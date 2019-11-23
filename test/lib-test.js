@@ -5,7 +5,7 @@ const { describe } = require('mocha')
 describe('Postman Library unit test', function () {
   require('./jwtSign')
   require('./jwtVerify')
-  require('./clientAssertionJwt')
+  require('./clientAssertPrivateKey')
   require('./pkceChallenge')
   require('./sha256')
 })

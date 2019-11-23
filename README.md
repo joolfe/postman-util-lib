@@ -4,8 +4,6 @@ A crypto utility library to be used from Postman Pre-request scripts and Tests s
 
 # ROADMAP
 
-- Refactor test and split in different files
-- Create a util for test with constant and method
 - Add check of all the fields in my methods.
 - Create a method for the other authentication method for openid.
 - Check is rsassign is available as variables or not.
