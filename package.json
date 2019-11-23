@@ -7,7 +7,7 @@
     "test": "nyc npm run test:unit",
     "test:unit": "mocha test/lib-test.js",
     "build": "browserify src/lib.js > dist/bundle.js -s pmlib",
-    "dev": "npm run build && node src/builtin-server.js"
+    "dev": "npm run build && node index.js"
   },
   "author": "",
   "license": "MIT",
@@ -21,7 +21,9 @@
     "jwk-to-pem": "^2.0.1",
     "mocha": "^6.2.2",
     "nyc": "^14.1.1",
-    "standard": "^14.3.1"
+    "sinon": "^7.5.0",
+    "standard": "^14.3.1",
+    "supertest": "^4.0.2"
   },
   "nyc": {
     "all": true,
