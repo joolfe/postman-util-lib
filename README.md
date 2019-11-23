@@ -5,13 +5,11 @@ A crypto utility library to be used from Postman Pre-request scripts and Tests s
 # ROADMAP
 
 - Test in postman all new methods
-- Need to test error case in the server
 - Check is rsassign is available as variables or not.
-- Add coverage to the test
-- Add more test for mssing parameters, defaults...
 - Minimize bundle to make smaller the files. 
 - Create integration test to do an eval and use.
-- Create script process to test, buils...
+- Can i test with newman?
+- Create a collection with the "installation" process
 - Create docs to explain how to use it
 - Publish doc in github pages
 - Customize a little the jeckill theme.

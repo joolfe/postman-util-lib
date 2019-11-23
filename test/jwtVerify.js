@@ -19,6 +19,13 @@ describe('jwtVerify()', function () {
     assert.strictEqual(decodedJWT.payload.aud, AUD)
   })
 
+  it('Should fail when incorrect PublicKey', function () {
+    assert.throws(
+      () => lib.jwtVerify(JWT_VALID, 'hola'),
+      expectError('Error', '[jwtVerify] not supported argument')
+    )
+  })
+
   it('Should fail when no jwt passed', function () {
     assert.throws(
       () => lib.jwtVerify(undefined, PEM_PUB_KEY),

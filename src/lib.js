@@ -99,7 +99,8 @@ function jwtVerify (jwt, pubkey, algorithm = DEFAULT_ALG) {
       payload: parsed.payloadObj
     }
   } catch (err) {
-    throw new Error(`[jwtVerify] ${err.message}`)
+    const msg = (typeof err === 'string') ? err : err.message
+    throw new Error(`[jwtVerify] ${msg}`)
   }
 }
 
