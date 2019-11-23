@@ -157,5 +157,6 @@ module.exports = {
   jwtVerify,
   sha256,
   clientAssertPrivateKey,
-  clientAssertSecret
+  clientAssertSecret,
+  rs
 }

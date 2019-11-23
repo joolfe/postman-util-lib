@@ -6,7 +6,7 @@
   "scripts": {
     "test": "nyc npm run test:unit",
     "test:unit": "mocha test/lib-test.js",
-    "build": "browserify src/lib.js > dist/bundle.js -s pmlib",
+    "build": "browserify -p tinyify src/lib.js > dist/bundle.js -s pmlib",
     "dev": "npm run build && node index.js"
   },
   "author": "",
@@ -23,7 +23,8 @@
     "nyc": "^14.1.1",
     "sinon": "^7.5.0",
     "standard": "^14.3.1",
-    "supertest": "^4.0.2"
+    "supertest": "^4.0.2",
+    "tinyify": "^2.5.2"
   },
   "nyc": {
     "all": true,
