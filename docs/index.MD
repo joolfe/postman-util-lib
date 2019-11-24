@@ -6,8 +6,8 @@ Postman-util-lib is a javascript library bundle to squeeze Postman script allowi
 
 - Setup in less than 5 min.
 - Straig use for JWT sign and validation.
-- Openid Connect 'client_secret_jwt' and 'private_key_jwt' implementation.
-- All [jsrsasign](http://kjur.github.io/jsrsasign/) features availables.
+- Openid Connect `client_secret_jwt` and `private_key_jwt` implementation.
+- All [jsrsasign](http://kjur.github.io/jsrsasign/) methods exposed in the library.
 
 # How to "Install"
 
@@ -37,6 +37,16 @@ Don't forget the variable name, will be used in the next section about "How to u
 
 # How to use it
 
+Postman use a Sandbox to execute the scripts so to use libraries the only allowed method is using an `eval()`. 
+
+If you have use the 
+
+```
+eval( pm.globals.get('pmlib') )
+```
+Executing this code a new variable called `pmlib` has been created and is available in the scope of the tab where you have execute the code.
+
+> The variable name chousl be the same as you have decoded in the installation step.
 
 
 # Available Methods
