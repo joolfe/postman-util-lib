@@ -6,13 +6,15 @@ A crypto utility library to be used from Postman Pre-request scripts and Tests s
 
 - Can i test with newman and a postman collection?
 - Create a collection with the "installation" process
-- Create docs to explain how to use it
-- Publish doc in github pages
 - Customize a little the jeckill theme.
+- Create docs to explain how to use it
 - Play with github actions to do the work when push new versions.
+
 
 # Pending Docs
 
+- Put a logo in the redme
+- Put logo in the docs
 - Manual or Automatic (using postman) installation.
 - Explain where is going to be published.
 - Provided methods.
