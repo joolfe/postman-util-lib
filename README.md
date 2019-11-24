@@ -7,6 +7,7 @@ A crypto utility library to be used from Postman Pre-request scripts and Tests s
 - Can i test with newman and a postman collection?
 - Create a collection with the "installation" process
 - Customize a little the jeckill theme.
+  - background-image: linear-gradient(120deg, #5f5278, #ff6b37);
 - Create docs to explain how to use it
 - Play with github actions to do the work when push new versions.
 - Where could i put the bundle published correctly?? have a look and test

@@ -42,5 +42,6 @@ Don't forget the variable name, will be used in the next section about "How to u
 # Available Methods
 
 
-# 
+
+# Common Receipts
 
