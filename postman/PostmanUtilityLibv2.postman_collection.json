@@ -1,0 +1,144 @@
+{
+	"info": {
+		"_postman_id": "6d13a166-5931-46e6-b43b-680a0cd3ae53",
+		"name": "Postman Utility Lib",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Lib install",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "469df052-1d9f-40da-8e22-a78c68e22111",
+						"exec": [
+							"pm.test(\"Status code should be 200\", function () {",
+							"    pm.response.to.have.status(200)",
+							"    pm.globals.set(\"pmlib_code\", responseBody)",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "4a1873e6-cac6-454b-b008-67abd814b0b1",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": "https://joolfe.github.io/postman-util-lib/dist/bundle.js",
+				"description": "Load the postman-util-lib from dev server"
+			},
+			"response": []
+		},
+		{
+			"name": "Lib use example",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "cdfe509e-9bb1-44b3-8cd4-1eea957503d1",
+						"exec": [
+							"",
+							"// Loading the library",
+							"eval(pm.globals.get('pmlib_code'))",
+							"",
+							"",
+							"// Generate a PKCE challenge",
+							"const challenge  = pmlib.pkceChallenge()",
+							"console.log(challenge)",
+							"",
+							"",
+							"// Obtain the SHA-256 from a string",
+							"const sha256String = pmlib.sha256('example string')",
+							"console.log(sha256String)",
+							"",
+							"",
+							"// Create a client assertion 'client_secret_jwt'",
+							"const clientSecretJwt = pmlib.clientAssertSecret('mySecret', 'myIss', 'myAUD')",
+							"console.log(clientSecretJwt)",
+							"",
+							"",
+							"// JWK used by jwt signature",
+							" const jwk = {",
+							"      \"e\": \"AQAB\",",
+							"      \"n\": \"7-ql2BxRpd5PEKs9h6oouoLJSK1PZgElYnHtC1EvtBcJ5rsPhRLQ95SFuzMVuPzrRymTx2DAiYrFryNNGvYgGMjwjZZ6gL0FebxGooY9P_voShuzNOg22n9aayqM7U61pmfSsu_0Gm8ZFu0hZa4VT7xn_LFIZnB_BTwG9EZtIwyGdHitMcakvdgOjTTmLqzdSjqie_7IHJrLb9JFPLrYsUDGU3v7U4joKwyZWCbaBRLrhmsAxbKhfGBA-zdSAMVtKTuu4HuQ8gnEmYpdL2wZjLH1EpxZpl_dbojzKqqGqDW7inz1SE1y4A86DE4kIzVWMqltxeMpamGOyBtSKYp5Xw\",",
+							"      \"d\": \"7yt3myJYDse5AEAFfdoW8h_xcx862NBpqWMzUSXlLV4OQ9LVXO7uHPIWAxGhJSIVloKPTKJaLoOGINtLQYZ9ZtfiXvPVOcO10q7rp5e1NbT10_MbSrH4BQgSZmUrymK92Z8Ev9dP_I4mb-GDeq75ldyXuaQuLdkV92zo7dnLcLRciQsFsBirOOICp0RjGdCgoAZMfM5WIvRJ7XYsXP2qGMEOdyeTo3MGWZIYJGSOLvh1OMsWrrqQmPPuh0qnWj5IccJsWQv8oSNPVah9K0b0Zgv5-anr6ZkR33_vr6nK7SiZNIAH48mOrGVKGEyAZGsgoyrNhSVOg39l5jFwkamHUQ\",",
+							"      \"p\": \"_kSDQ1oCxkTAUjSfsiZ-lj_ineDSTbcfYEP1WyhnNwfUbVP33QYAGg8f36xL65JKZAo4GaZvsVytaqiOiU5u1FFh0Tm7sRU6qG-YjYM0pynsptpQgh4p9mQ0WoURmXoryzIrqq8TRQA871gql14HVavydUrd1Gz10QJkn5cqhJk\",",
+							"      \"q\": \"8Y0at7FhEtALdBH-L-m2Y4hI9iecA-Y6FXspsiPN4ILXmdO2V1W7pJ9uj-pBt2CWdZbBptd4w3rHiECHOXDYBsn-AjRDwcPRWnhiL_TM4TSlWtyuTAcRg7b_tSWY8ptkIH9nDHYi5_VtdkIWg74Z3oFxWZYS9SKbURnzJ8AxMLc\",",
+							"      \"dp\": \"papmC9_9psjstaLr2dsS5zpAoLT20QPbQZGFrxsoBMbpNUJcYHmkX1YzYjyUSqxKI9w0qSGz7E-B_dhM5lFgDJ3pqbSAAeTfDxeGwc0W5UN_mUbs5ZpZpNus8L16thDPr9jEcrUXTQHWsesz9OOiy8L4ekuJNPq5PrDcds67OSE\",",
+							"      \"dq\": \"SZXf5sf9t5pzcsesdPIw4v94oqyMZc-0MCkWGbO4m0Wg4rbRXKe8gzkimGsX3AJrs6Tal7YajwqPUJ2_1CrhVKgiXo-HeLbrxzDXUJ6174F3QkfqPTUGC-cq3Qd4IahfB1tojC5NEfb9gsI9U6MNBHDQlCcY3V7OjBVostpk4d8\",",
+							"      \"qi\": \"M76jNmuSeQHB5niL0mhtOazj1gQ_gI69yqoCDKgG9lbb1-C1uQ_bpozc9gTwvG0OZ_iqcJ_vNm_vj3d4-2_g8Njm8KTdzILLSw8v4aV-EGijyHPJtJii91SyZY39ZDT-SaWIXAL55aIF5ZfsBhmpwcXK9iCLjy1z2sIjzo023SU\",",
+							"      \"kty\": \"RSA\",",
+							"      \"kid\": \"259337db-7412-45da-ad86-b63c97796588\",",
+							"      \"use\": \"sig\"",
+							"    }",
+							"// Create a signed jwt (JWS)",
+							"const jws = pmlib.jwtSign(jwk, { aud: 'myAUD', iss: 'myIss', claim: 'my CustomClaim' })",
+							"console.log(jws)",
+							"",
+							"",
+							"// Create a client assertion 'private_key_jwt'",
+							"const privateKeyJwt = pmlib.clientAssertPrivateKey(jwk,'myIss', 'myAUD')",
+							"console.log(privateKeyJwt)",
+							"",
+							"",
+							"// Verify a JWT ",
+							"const jwt = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJjbGllbnRfaWQiOiJiYjJkOTVkZi1hZTJlLTRmMjItYTZhYi05NThkMzU5MWYxY2YiLCJpc3MiOiJiYjJkOTVkZi1hZTJlLTRmMjItYTZhYi05NThkMzU5MWYxY2YiLCJhdWQiOiJodHRwOi8vYXVkaWVuY2UudGVzdC5jb20iLCJpYXQiOjE1NzQ1MjU3NzAsIm5iZiI6MTU3NDUyNTc3MCwiZXhwIjo0NTc0NTI1Nzc1LCJqdGkiOiJObGtjZnJiSndTdlpydnRGRFZyalAifQ.JDppWmFODDibkZTN_nK0XhCtdX9NhgQwhoSL0nIYRcOhL5d9PeWrv7D9b8zaWr3FAoXoJ1irEN7-ctVY8ohLb5QSwYTNE6dqh-B4r0IRCnQ2lybjND6fdKLaTAZ3rbk9l2akGqa78WGceP6zH_oHTQIG0YULbPt5zS5bgsNHdCoRWhy79VsaQ45e1o3CYwKJdyl-6cioJI4Bjb5pbC_Vuup0wEzPdOAbPLYQ6gIuM_Wio8fAwVCSHObQToQPLhuQ7ISrgJCw1J73af8Rw1w9qNzSPZZ2GWi_BiBdgPvDm-nmVgKzV9K5m1UEQa9IAhmf99ekGESeTXFBF8kAL7iXyA'",
+							"const pubkey = '-----BEGIN PUBLIC KEY-----\\n' +",
+							"'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAstXEkU/agbNkQgh6a9DV\\n' +",
+							"'C/WXGmNy8g+hdTOBhYUk5PfZCwTNt5SCYBLjIPhs2ZRrNuCN3PhwHRQPQOTsS6Nl\\n' +",
+							"'Bzw+SjPVFBhPcbMHbJWnC87Q5ID/uAuwJjcUQXUTVspwIgfRmHvuuT7w7AYnCNvz\\n' +",
+							"'B5TuPj2vVH8rij9BXkAHambaeGG7L10MPeUiVU6M0F/QKCJhEWAYGEt4NffSXETx\\n' +",
+							"'zHSl8nyXxVJfnjxVhnZyZVXTIpLwvRy04hnkAoFexh7npRtnQdsLuIHtaJsm7gFY\\n' +",
+							"'mxhr3Nxbh9p1pC7fHpJ+jMcxAAhA07WqYf6lOsxXHfPav1FEMX214YTsKTw68xqo\\n' +",
+							"'DwIDAQAB\\n' +",
+							"'-----END PUBLIC KEY-----\\n'",
+							"const result = pmlib.jwtVerify(jwt, pubkey)",
+							"console.log(result)",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "6f956fb0-464a-497b-93b8-a31178bc0b8d",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": "https://postman-echo.com"
+			},
+			"response": []
+		}
+	]
+}
