@@ -4,7 +4,7 @@ const http = require('http')
 const fs = require('fs')
 const path = require('path')
 
-const bundlePath = path.join(__dirname, '../dist/bundle.js')
+const bundlePath = path.join(__dirname, '../docs/dist/bundle.js')
 
 module.exports = http.createServer(function (req, res) {
   try {

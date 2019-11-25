@@ -6,7 +6,7 @@
   "scripts": {
     "test": "nyc npm run test:unit",
     "test:unit": "mocha test/lib-test.js",
-    "build": "browserify -p tinyify src/lib.js > dist/bundle.js -s pmlib",
+    "build": "browserify -p tinyify src/lib.js > docs/dist/bundle.js -s pmlib",
     "dev": "npm run build && node index.js"
   },
   "author": "",
