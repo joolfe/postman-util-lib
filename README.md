@@ -12,12 +12,14 @@ A crypto utility library to be used from Postman Pre-request scripts and Tests s
 
 # Pending Docs
 
+- PUt the jwt in the repo so can be test in the exmaple postman collection
+- Use h2 and h3 better than h1 and h2?
 - Create a logo for github
 - Put a logo in the readme
 - Put logo in the docs
-- Put icons in the fatures and think in more features.
+- Put icons in the features and think in more features.
 - Provided methods.
-- Put shidls in the readme?
+- Put shields in the readme?
 - Tutorial about how to use it with postman collection examples.
 - Create gifs to show how to use it.
 - Put a sections whit typicall receipts (create a jwt request, validate a id token....)
