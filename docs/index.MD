@@ -142,9 +142,10 @@ Generate a signed jwt for use 'client_secret_jwt' client authentication as descr
 
 The library expose all the method of [jsrsasign](http://kjur.github.io/jsrsasign/) in the object `rs`, so you can use all the method described in the [API documentation](https://kjur.github.io/jsrsasign/api/).
 
-For example: 
-
-
+For example:
+```
+const base64String = pmlib.rs.stob64u('My amazing string')
+```
 
 # Postman collection
 
@@ -159,6 +160,3 @@ Inside the collection you will find the next requests:
 
 - *Lib install:* A GET request to download the library source and put into a global variable. Is the automatic installation.
 - *Lib use example:* In the "script" tabs you will find examples about how to use the library.
-
-
-
