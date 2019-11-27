@@ -1,3 +1,5 @@
+![logo](/docs/assets/img/logo.png)
+
 # postman-util-lib
 
 A crypto utility library to be used from Postman Pre-request scripts and Tests script tabs.
@@ -11,11 +13,6 @@ A crypto utility library to be used from Postman Pre-request scripts and Tests s
 
 # Pending Docs
 
-- Create a logo
-- Put logo in docs
-- Put logo in this readme
-- Put a favicon in Jekil
-  - https://stackoverflow.com/questions/30551501/unable-to-set-favicon-using-jekyll-and-github-pages
 - Put section in different colors
 - List of argument put in colors or something??
 - Put icons in the features and think in more features.

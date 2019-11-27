@@ -1,4 +1,4 @@
-+-- {.tilted-section}
+<div markdown="1" class="tilted-section">
 
 # A crypto utility library for Postman
 
@@ -12,7 +12,7 @@ Postman-util-lib is a javascript library bundle to squeeze Postman script allowi
 - [PCKE](https://tools.ietf.org/html/rfc7636) challenge generation
 - All [jsrsasign](http://kjur.github.io/jsrsasign/) methods exposed in the library.
 
-=--
+</div>
 
 # Installation
 
@@ -151,7 +151,6 @@ For example:
 ```
 const base64String = pmlib.rs.stob64u('My amazing string')
 ```
-
 
 # Postman collection
 
