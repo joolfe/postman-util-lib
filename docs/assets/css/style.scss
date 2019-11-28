@@ -34,9 +34,7 @@ $section-headings-color: #ff6b37 !default;
         @include large {
             -webkit-clip-path: polygon(0 0, 100% 2vw, 100% 100%, 0 100%);
             clip-path: polygon(0 0, 100% 2vw, 100% 100%, 0 100%);
-            max-width: 64rem;
             padding: 2rem 6rem;
-            margin: 0 auto;
         }
         
         @include medium {
@@ -45,6 +43,13 @@ $section-headings-color: #ff6b37 !default;
     
         @include small {
             padding: 2rem 1rem;
+        }
+
+        > div {
+            @include large {
+                max-width: 64rem;
+                margin: 0 auto;
+            }
         }
     }
 
