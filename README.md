@@ -17,6 +17,7 @@ A crypto utility library to be used from Postman Pre-request scripts and Tests s
 - Personalize footer is to ugly.
 - Put icons in the features and think in more features.
 - List of argument put in colors or something??
+- Speelcheck please
 - Put shields in the readme?
 - Create gifs to show how to use it.
 - Put in somewhere the postman variable scopes reference.
@@ -24,4 +25,4 @@ A crypto utility library to be used from Postman Pre-request scripts and Tests s
 
 # Develop
 
-Node 10
+`Nodejs` `Javascript` `Jeckyll` `Mocha` `Postman` `Crypto` `Newman`
