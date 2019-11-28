@@ -28,23 +28,24 @@ $section-headings-color: #ff6b37 !default;
     }
 
     .tilted-section {
-        -webkit-clip-path: polygon(0 0, 100% calc(100% - 4vw), 100% 100%, 100%);
-        clip-path: polygon(0 0, 100% calc(100% - 4vw), 100% 100%, 0 100%);
+        background-color: #fff;
+        -webkit-clip-path: polygon(0 0, 100% 4vw, 100% 100%, 100%);
+        clip-path: polygon(0 0, 100% 4vw, 100% 100%, 0 100%);
         margin-top: -4vw;
 
         @include large {
-            -webkit-clip-path: polygon(0 0, 100% calc(100% - 2vw), 100% 100%, 0 100%);
-            clip-path: polygon(0 0, 100% calc(100% - 2vw), 100% 100%, 0 100%);
-            padding: 2rem 0em;
+            -webkit-clip-path: polygon(0 0, 100% 2vw, 100% 100%, 0 100%);
+            clip-path: polygon(0 0, 100% 2vw, 100% 100%, 0 100%);
+            padding: 4rem 0em;
             margin-top: -2vw;
         }
 
         @include medium {
-            padding: 2rem 0em;
+            padding: 4rem 0em;
         }
     
         @include small {
-            padding: 2rem 0em;
+            padding: 4rem 0em;
         }
         
         > div {
@@ -69,6 +70,9 @@ $section-headings-color: #ff6b37 !default;
     }
 
     .site-footer {
+        background-color: #1C272B;
+        color: #fff;
+
         @include large {
             max-width: 64rem;
             margin: 0 auto;
