@@ -15,6 +15,7 @@ A crypto utility library to be used from Postman Pre-request scripts and Tests s
 
 - Put section in different colors
 - Personalize footer is to ugly.
+- Change code color because cannot be seen in grey sections.
 - Put icons in the features and think in more features.
 - List of argument put in colors or something??
 - Speelcheck please
