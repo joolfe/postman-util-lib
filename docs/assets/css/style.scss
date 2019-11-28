@@ -72,22 +72,21 @@ $section-headings-color: #ff6b37 !default;
     .site-footer {
         color: #fff;
         background-color: #1C272B;
-        padding-top: 0rem;
         margin-top: 0rem;
 
         > div {
             @include large {
                 max-width: 64rem;
                 margin: 0 auto;
-                padding: 0rem 6rem;
+                padding: 2rem 6rem;
             }
     
             @include medium {
-                padding: 0rem 4rem;
+                padding: 2rem 4rem;
             }
         
             @include small {
-                padding: 0rem 1rem;
+                padding: 2rem 1rem;
             }
         }
     }

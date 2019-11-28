@@ -14,12 +14,9 @@ A crypto utility library to be used from Postman Pre-request scripts and Tests s
 # Pending Docs
 
 - Change code color because cannot be seen in grey sections.
-- Put icons in the features and think in more features.
 - List of argument put in colors or something??
-- Speelcheck please
 - Put shields in the readme?
 - Create gifs to show how to use it.
-- Put in somewhere the postman variable scopes reference.
 - Put especial words or something
 
 # Develop
