@@ -26,5 +26,30 @@ $section-headings-color: #ff6b37 !default;
         padding: 0px;
         font-size: 1rem;
     }
+
+    .tilted-section {
+        -webkit-clip-path: polygon(0 0, 100% 4vw, 100% 100%, 0 100%);
+        clip-path: polygon(0 0, 100% 4vw, 100% 100%, 0 100%);
+
+        @include large {
+            -webkit-clip-path: polygon(0 0, 100% 2vw, 100% 100%, 0 100%);
+            clip-path: polygon(0 0, 100% 2vw, 100% 100%, 0 100%);
+            max-width: 64rem;
+            padding: 2rem 6rem;
+            margin: 0 auto;
+        }
+        
+        @include medium {
+            padding: 2rem 4rem;
+        }
+    
+        @include small {
+            padding: 2rem 1rem;
+        }
+    }
+
+    .tilted-section:nth-of-type(odd) {
+        background-color: #f7f6f9 !important
+    }
     
 }
