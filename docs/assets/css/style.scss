@@ -9,6 +9,10 @@ $section-headings-color: #ff6b37 !default;
 
 @import "{{ site.theme }}";
 
+strong {
+    color: #788286;
+}
+
 .main-content {
   
     @include large {

@@ -13,10 +13,10 @@ A crypto utility library to be used from Postman Pre-request scripts and Tests s
 
 # Pending Docs
 
-- List of argument put in colors or something??
 - Put shields in the readme?
 - Create gifs to show how to use it.
 - Put especial words or something
+- Create developer/internal docs about how to compile and everything....
 
 # Develop
 
