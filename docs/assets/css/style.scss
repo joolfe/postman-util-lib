@@ -45,27 +45,36 @@ $section-headings-color: #ff6b37 !default;
         @include large {
             -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 2vw));
             clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 2vw));
+            padding: 2rem 0em;
+        }
+
+        @include medium {
+            padding: 2rem 0em;
+        }
+    
+        @include small {
+            padding: 2rem 0em;
         }
         
         > div {
             @include large {
                 max-width: 64rem;
                 margin: 0 auto;
-                padding: 2rem 6rem;
+                padding: 0rem 6rem;
             }
 
             @include medium {
-                padding: 2rem 4rem;
+                padding: 0rem 4rem;
             }
         
             @include small {
-                padding: 2rem 1rem;
+                padding: 0rem 1rem;
             }
         }
     }
 
-    .tilted-section:nth-of-type(odd) {
-        background-color: #f7f6f9 !important
+    .tilted-section:nth-of-type(even) {
+        background-color: #f1f1f3 !important
     }
     
 }

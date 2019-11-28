@@ -1,5 +1,5 @@
-<div class="tilted-section">
-<div markdown="1">
+<div class="tilted-section"><div markdown="1">
+
 # A crypto utility library for Postman
 
 Postman-util-lib is a javascript library bundle to squeeze Postman script allowing you to easy use lot of cryptography method from `Pre-request Script` and `Tests` tabs in Postman.
@@ -12,10 +12,8 @@ Postman-util-lib is a javascript library bundle to squeeze Postman script allowi
 - [PCKE](https://tools.ietf.org/html/rfc7636) challenge generation
 - All [jsrsasign](http://kjur.github.io/jsrsasign/) methods exposed in the library.
 
-</div>
-</div>
-<div class="tilted-section">
-<div markdown="1">
+</div></div>
+<div class="tilted-section"><div markdown="1">
 
 # Installation
 
@@ -43,9 +41,8 @@ If you can't import the [example postman collection](#postman-collection)  or si
 
 Don't forget the variable name, will be used in the next section about "How to use it" the library.
 
-</div>
-<div class="tilted-section">
-<div markdown="1">
+</div></div>
+<div class="tilted-section"><div markdown="1">
 
 # Usage
 
@@ -158,10 +155,8 @@ For example:
 const base64String = pmlib.rs.stob64u('My amazing string')
 ```
 
-</div>
-</div>
-<div class="tilted-section">
-<div markdown="1">
+</div></div>
+<div class="tilted-section"><div markdown="1">
 
 # Postman collection
 
@@ -177,5 +172,4 @@ Inside the collection you will find the next requests:
 - *Lib install:* A GET request to download the library source and put into a global variable. Is the automatic installation.
 - *Lib use example:* In the "script" tabs you will find examples about how to use the library.
 
-</div>
-</div>
+</div></div>
