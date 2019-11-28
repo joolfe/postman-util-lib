@@ -2,13 +2,13 @@
 
 # A crypto utility library for Postman
 
-Postman-util-lib is a javascript library bundle to squeeze Postman script allowing you to easy use lot of cryptography method from `Pre-request Script` and `Tests` tabs in Postman.
+Postman-util-lib is a JavaScript library bundle to squeeze Postman script allowing you to easy use lot of cryptography method from `Pre-request Script` and `Tests` tabs in Postman.
 
 ## Features
 
 - Setup in less than 5 min.
-- Straihg use for JWT sign and validation.
-- Openid Connect `client_secret_jwt` and `private_key_jwt` implementation.
+- Straight use for JWT signature and validation.
+- OpenID Connect `client_secret_jwt` and `private_key_jwt` implementation.
 - [PCKE](https://tools.ietf.org/html/rfc7636) challenge generation
 - All [jsrsasign](http://kjur.github.io/jsrsasign/) methods exposed in the library.
 
@@ -25,17 +25,17 @@ In a Postman global variable, so can be reference from all your Collections/Requ
 
 You have two options:
 
-## Automatic Setup (Recomended)
+## Automatic Setup (Recommended)
 
-Just download the [example postman collection](#postman-collection) in your computer and [import the collection](https://learning.getpostman.com/docs/postman/collections/data-formats/#importing-postman-data) into your Postman app, execute the GET request called "Lib install" and thats all! If request respond with a 200 OK the library will be store in a global variable called `pmlib_code` :muscle:
+Just download the [example postman collection](#postman-collection) in your computer and [import the collection](https://learning.getpostman.com/docs/postman/collections/data-formats/#importing-postman-data) into your Postman app, execute the GET request called "Lib install" and that’s all! If request respond with a 200 OK the library will be store in a global variable called `pmlib_code` :muscle:
 
 ## Manual Setup
 
-If you can't import the [example postman collection](#postman-collection)  or simply you want to do the process by your selfve, don't worry is also very easy :relieved:.
+If you can't import the [example postman collection](#postman-collection)  or simply you want to do the process by your selve, don't worry is also very easy :relieved:.
 
 1. Navigate to the [bundle url](https://joolfe.github.io/postman-util-lib/bundle.js) in your web browser and copy the content of the page.
 2. In your Postman app open the "Manage Environments" screen clicking in the cogs icon located in the top right corner of the principal postman screen.
-3. Once in "MANAGE ENVIRONMENTS" screen click on the "Globals" button. You will see a list of defined globals variables.
+3. Once in "MANAGE ENVIRONMENTS" screen click on the "Globals" button. You will see a list of defined global variables.
 4. Create a new variable in the table, choose a name (for example `pmlib_code`) and put in the first column, paste the bundle text in "INITIAL VALUE" column, and save using the button on the bottom.
 5. That's all :muscle:
 
@@ -46,19 +46,19 @@ Don't forget the variable name, will be used in the next section about "How to u
 
 # Usage
 
-Postman use a Sandbox to execute the javascript code, this means that you cannot import libraries as usually, the only allowed method is using the function `eval()`, I know I know is not a good practice but is the only way :grimacing:. So to make the library available to be used in a `Pre-request Script` or `Tests` script you just need to do:
+Postman use a Sandbox to execute the JavaScript code, this means that you cannot import libraries as usually, the only allowed method is using the function `eval()`, I know I know is not a good practice but is the only way :grimacing:. So to make the library available to be used in a `Pre-request Script` or `Tests` script you just need to do:
 
-```
+```javascript
 eval( pm.globals.get('pmlib_code') )
 ```
 
 The name of the variable that you get from `globals` scopes should be the same as you have choose in the installation step. When execute this code a new variable called `pmlib` will be created and will be available in the scope of the tab where you have execute this code.
 
-> Note: Don't mismatch the variable name where you have put the library code whith the name of the variable created after do the installation, this last name `pmlib` is static inside the library and you cannot change by yourselfe.
+> Note: Don't mismatch the variable name where you have put the library code with the name of the variable created after do the installation, this last name `pmlib` is static inside the library and you cannot change by yourself.
 
-Now that library is loaded you can use it just referencing to `pmlib`, for examaple to obtain a PKCE challenge just put this code:
+Now that library is loaded you can use it just referencing to `pmlib`, for example to obtain a PKCE challenge just put this code:
 
-```
+```javascript
 const challenge = pmlib.pkceChallenge()
 console.log(challenge)
 ```
@@ -74,7 +74,7 @@ If you open the [Postman console](https://learning.getpostman.com/docs/postman/s
 ### pmlib.pkceChallenge()
 
 Generate a "S256" Proof Key for Code Exchange (PKCE) as described in [RFC7636](https://tools.ietf.org/html/rfc7636), return an object like:
-```
+```javascript
 {
     code_challenge: "JT4SVOGg1mUhv8QNz3_PIYdgEJxy6tUyx9qAR_GWbPE"
     code_challenge_method: "S256"
@@ -101,8 +101,8 @@ in case of not valid jwt the method will throw and Error.
 * pubkey: {String} Public key string to verify the signature. (Pem format)
 * algorithm: {String} Jwt should be signed with this algorithm. Default value 'RS256'
 
-In case of success the method return an object like:
-```
+In case of success the method returns an object like:
+```javascript
 {
     header: {
         alg: "RS256"
@@ -151,7 +151,7 @@ Generate a signed jwt for use 'client_secret_jwt' client authentication as descr
 The library expose all the method of [jsrsasign](http://kjur.github.io/jsrsasign/) in the object `rs`, so you can use all the method described in the [API documentation](https://kjur.github.io/jsrsasign/api/).
 
 For example:
-```
+```javascript
 const base64String = pmlib.rs.stob64u('My amazing string')
 ```
 
