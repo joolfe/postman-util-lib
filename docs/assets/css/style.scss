@@ -34,8 +34,8 @@ $section-headings-color: #ff6b37 !default;
         margin-top: -4vw;
 
         @include large {
-            -webkit-clip-path: polygon(0 0, 100% 2vw, 100% 100%, 0 100%);
-            clip-path: polygon(0 0, 100% 2vw, 100% 100%, 0 100%);
+            -webkit-clip-path: polygon(0 0, 100% 3vw, 100% 100%, 0 100%);
+            clip-path: polygon(0 0, 100% 3vw, 100% 100%, 0 100%);
             padding: 4rem 0em;
             margin-top: -2vw;
         }
@@ -70,21 +70,23 @@ $section-headings-color: #ff6b37 !default;
     }
 
     .site-footer {
-        background-color: #1C272B;
         color: #fff;
+        background-color: #1C272B;
 
-        @include large {
-            max-width: 64rem;
-            margin: 0 auto;
-            padding: 2rem 6rem;
-        }
-
-        @include medium {
-            padding: 2rem 4rem;
-        }
+        > div {
+            @include large {
+                max-width: 64rem;
+                margin: 0 auto;
+                padding: 2rem 6rem;
+            }
     
-        @include small {
-            padding: 2rem 1rem;
+            @include medium {
+                padding: 2rem 4rem;
+            }
+        
+            @include small {
+                padding: 2rem 1rem;
+            }
         }
     }
     
