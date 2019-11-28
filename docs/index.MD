@@ -86,20 +86,20 @@ Generate a "S256" Proof Key for Code Exchange (PKCE) as described in [RFC7636](h
 
 Create and sign a [JWT](https://tools.ietf.org/html/rfc7519) with the provided data
 
-* jwk: {Object, String} A jwk key to sign the jwt
-* payload: {Object} The jwt payload claims.
-* header: {Object} The jwt additional headers claims.
-* exp: {Number} The expiration time in seconds, default value 10min (600seg)
-* alg: {String} The algorithm used to sign the jwt, default value 'RS256'
+* **jwk:** (Object, String) A jwk key to sign the jwt
+* **payload:** (Object) The jwt payload claims.
+* **header:** (Object) The jwt additional headers claims.
+* **exp:** (Number) The expiration time in seconds, default value 10min (600seg)
+* **alg:** (String) The algorithm used to sign the jwt, default value 'RS256'
 
 ### pmlib.jwtVerify(jwt, pubkey, algorithm = DEFAULT_ALG)
 
 Verify that a [JWT](https://tools.ietf.org/html/rfc7519) is valid (time) and correctly signed and return the parsed value,
 in case of not valid jwt the method will throw and Error.
 
-* jwt: {String} The jwt in string format to be verified.
-* pubkey: {String} Public key string to verify the signature. (Pem format)
-* algorithm: {String} Jwt should be signed with this algorithm. Default value 'RS256'
+* **jwt:** (String) The jwt in string format to be verified.
+* **pubkey:** (String) Public key string to verify the signature. (Pem format)
+* **algorithm:** (String) Jwt should be signed with this algorithm. Default value 'RS256'
 
 In case of success the method returns an object like:
 ```javascript
@@ -124,27 +124,27 @@ In case of success the method returns an object like:
 
 Return the hash of the passed value in sha256
 
-* string: {String} The value to be hashed to sha256.
+* **string:** (String) The value to be hashed to sha256.
 
 ### pmlib.clientAssertPrivateKey(jwk, clientID, aud, exp = 600, alg = DEFAULT_ALG)
 
 Generate a signed jwt for use 'private_key_jwt' client authentication as describe in [Section 9 of OIDC](https://openid.net/specs/openid-connect-core-1_0.html)
 
-* jwk: {String, Object} A jwk key to sign the jwt
-* clientID: {String} The client_id of the OAuth Client.
-* aud: {String} The aud (audience) Claim. Value that identifies the Authorization Server as an intended audience.
-* exp: {Number} The expiration time in seconds, default value 10min (600seg)
-* alg: {String} The algorithm used to sign the jwt, default value 'RS256'
+* **jwk:** (String, Object) A jwk key to sign the jwt
+* **clientID:** (String) The client_id of the OAuth Client.
+* **aud:** (String) The aud (audience) Claim. Value that identifies the Authorization Server as an intended audience.
+* **exp:** (Number) The expiration time in seconds, default value 10min (600seg)
+* **alg:** (String) The algorithm used to sign the jwt, default value 'RS256'
 
 ### pmlib.clientAssertSecret(secret, clientID, aud, exp = 600, alg = DEFAULT_ALG_H)
 
 Generate a signed jwt for use 'client_secret_jwt' client authentication as describe in [Section 9 of OIDC](https://openid.net/specs/openid-connect-core-1_0.html)
 
-* secret: {secret} A client secret to sign the JWT
-* clientID: {String} The client_id of the OAuth Client.
-* aud: {String} The aud (audience) Claim. Value that identifies the Authorization Server as an intended audience.
-* exp: {Number} The expiration time in seconds, default value 10min (600seg)
-* alg: {String} The algorithm used to sign the jwt, default value 'RS256'
+* **secret:** (String) A client secret to sign the JWT
+* **clientID:** (String) The client_id of the OAuth Client.
+* **aud:** (String) The aud (audience) Claim. Value that identifies the Authorization Server as an intended audience.
+* **exp:** (Number) The expiration time in seconds, default value 10min (600seg)
+* **alg:** (String) The algorithm used to sign the jwt, default value 'RS256'
 
 ### pmlib.rs.*
 

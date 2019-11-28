@@ -13,7 +13,6 @@ A crypto utility library to be used from Postman Pre-request scripts and Tests s
 
 # Pending Docs
 
-- Change code color because cannot be seen in grey sections.
 - List of argument put in colors or something??
 - Put shields in the readme?
 - Create gifs to show how to use it.
