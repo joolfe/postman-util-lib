@@ -4,6 +4,7 @@
 $header-bg-color: #ff6b37 !default;
 $header-bg-color-secondary: #5f5278 !default;
 
+$body-link-color: #3b95ef !default;
 $section-headings-color: #ff6b37 !default;
 
 @import "{{ site.theme }}";
@@ -11,19 +12,19 @@ $section-headings-color: #ff6b37 !default;
 .main-content {
   
     @include large {
-      max-width: 64rem;
-      padding: 0px;
-      font-size: 1.1rem;
+        max-width: 100%;
+        padding: 0px;
+        font-size: 1.1rem;
     }
-  
+
     @include medium {
-      padding: 0px;
-      font-size: 1.1rem;
+        padding: 0px;
+        font-size: 1.1rem;
     }
-  
+
     @include small {
-      padding: 0px;
-      font-size: 1rem;
+        padding: 0px;
+        font-size: 1rem;
     }
     
 }
