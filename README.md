@@ -1,8 +1,9 @@
 ![logo](/docs/assets/img/logo.png)
 
-# postman-util-lib
+# [Postman-util-lib](https://joolfe.github.io/postman-util-lib/)
+![postman](https://img.shields.io/badge/Postman-%3E=7.0.9-green?logo=postman&style=flat-square&color=FF6C37)
 
-A crypto utility library to be used from Postman Pre-request scripts and Tests script tabs.
+Postman-util-lib is a JavaScript library bundle to squeeze Postman script allowing you to easy use lot of cryptography method from `Pre-request Script` and `Tests` tabs in Postman.
 
 # ROADMAP
 
@@ -18,6 +19,10 @@ A crypto utility library to be used from Postman Pre-request scripts and Tests s
 - Put especial words or something
 - Create developer/internal docs about how to compile and everything....
 
-# Develop
+# Tags
 
 `Nodejs` `Javascript` `Jeckyll` `Mocha` `Postman` `Crypto` `Newman`
+
+# LICENSE
+
+See the [LICENSE](https://github.com/joolfe/postman-util-lib/blob/master/LICENSE) file.

@@ -4,6 +4,8 @@
 
 Postman-util-lib is a JavaScript library bundle to squeeze Postman script allowing you to easy use lot of cryptography method from `Pre-request Script` and `Tests` tabs in Postman.
 
+![postman](https://img.shields.io/badge/Postman-%3E=7.0.9-green?logo=postman&style=flat-square&color=FF6C37)
+
 ## Features
 
 - Setup in less than 5 min.
