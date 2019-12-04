@@ -11,7 +11,7 @@ describe('clientAssertSecret()', function () {
   it("Should generate 'client_secret_jwt' assertion correctly with deault values", function () {
     const jwt = lib.clientAssertSecret(SECRET, CLIENT_ID, AUD)
     const decodeJwt = jsonwebtoken.verify(jwt, SECRET)
-    assert.strictEqual(decodeJwt.client_id, CLIENT_ID)
+    assert.strictEqual(decodeJwt.sub, CLIENT_ID)
     assert.strictEqual(decodeJwt.iss, CLIENT_ID)
     assert.strictEqual(decodeJwt.aud, AUD)
     assert(decodeJwt.iat)

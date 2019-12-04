@@ -124,7 +124,7 @@ function sha256 (string) {
  */
 function clientAssertPrivateKey (jwk, clientID, aud, exp = 600, alg = DEFAULT_ALG) {
   return jwtSign(jwk, {
-    client_id: clientID,
+    sub: clientID,
     iss: clientID,
     aud: aud
   }, {}, exp, alg)
@@ -143,7 +143,7 @@ function clientAssertSecret (secret, clientID, aud, exp = 600, alg = DEFAULT_ALG
   try {
     valString(secret, 'secret')
     return createJws(secret, {
-      client_id: clientID,
+      sub: clientID,
       iss: clientID,
       aud: aud
     }, {}, exp, alg)

@@ -11,7 +11,7 @@ describe('clientAssertPrivateKey()', function () {
   it("Should generate 'private_key_jwt' assertion correctly with deafult values", function () {
     const jwt = lib.clientAssertPrivateKey(JWK_KEY, CLIENT_ID, AUD)
     const decodeJwt = jsonwebtoken.verify(jwt, PEM_PUB_KEY)
-    assert.strictEqual(decodeJwt.client_id, CLIENT_ID)
+    assert.strictEqual(decodeJwt.sub, CLIENT_ID)
     assert.strictEqual(decodeJwt.iss, CLIENT_ID)
     assert.strictEqual(decodeJwt.aud, AUD)
     assert(decodeJwt.iat)
@@ -29,7 +29,7 @@ describe('clientAssertPrivateKey()', function () {
   it("Should generate 'private_key_jwt' assertion correctly with custom values", function () {
     const jwt = lib.clientAssertPrivateKey(JWK_KEY, CLIENT_ID, AUD, 3600, 'RS384')
     const decodeJwt = jsonwebtoken.verify(jwt, PEM_PUB_KEY)
-    assert.strictEqual(decodeJwt.client_id, CLIENT_ID)
+    assert.strictEqual(decodeJwt.sub, CLIENT_ID)
     assert.strictEqual(decodeJwt.iss, CLIENT_ID)
     assert.strictEqual(decodeJwt.aud, AUD)
     assert(decodeJwt.iat)
