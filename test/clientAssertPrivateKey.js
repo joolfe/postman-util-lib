@@ -20,6 +20,12 @@ describe('clientAssertPrivateKey()', function () {
     assert(decodeJwt.jti)
   })
 
+  it('Should add kid to header', function () {
+    const jwt = lib.clientAssertPrivateKey(JWK_KEY, CLIENT_ID, AUD)
+    const decodeJwt = jsonwebtoken.decode(jwt, { complete: true })
+    assert.strictEqual(decodeJwt.header.kid, JWK_KEY.kid)
+  })
+
   it("Should generate 'private_key_jwt' assertion correctly with custom values", function () {
     const jwt = lib.clientAssertPrivateKey(JWK_KEY, CLIENT_ID, AUD, 3600, 'RS384')
     const decodeJwt = jsonwebtoken.verify(jwt, PEM_PUB_KEY)

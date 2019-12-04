@@ -20,6 +20,12 @@ describe('clientAssertSecret()', function () {
     assert(decodeJwt.jti)
   })
 
+  it('Should not add kid', function () {
+    const jwt = lib.clientAssertSecret(SECRET, CLIENT_ID, AUD)
+    const decodeJwt = jsonwebtoken.decode(jwt, { complete: true })
+    assert(decodeJwt.header.kid === undefined)
+  })
+
   it('Should fail when no secret provided', function () {
     assert.throws(
       () => lib.clientAssertSecret(null, CLIENT_ID, AUD),

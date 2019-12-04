@@ -10,13 +10,14 @@ const DEFAULT_ALG_H = 'HS256'
 
 /**
  * create JWS with the provided data
- * @param {*} secret A key object or sectret to sign the jwt
- * @param {*} payload The jwt payload fields
- * @param {*} header Additional headers fields for jwt
- * @param {*} exp The expiration time in seconds, default value 10min (600seg)
- * @param {*} alg The algorithm used to sign the jwt, default value 'RS256'
+ * @param {String/Object} secret A key object or secret to sign the jwt
+ * @param {Object} payload The jwt payload fields
+ * @param {Object} header Additional headers fields for jwt
+ * @param {Number} exp The expiration time in seconds, default value 10min (600seg)
+ * @param {String} alg The algorithm used to sign the jwt, default value 'RS256'
+ * @param {String} kid The id of the key used to sign this jwt,
  */
-function createJws (secret, payload, header, exp, alg) {
+function createJws (secret, payload, header, exp, alg, kid) {
   valObject(payload, 'payload')
   valObject(header, 'header')
   valNumber(exp, 'exp')
@@ -25,7 +26,7 @@ function createJws (secret, payload, header, exp, alg) {
   var currentTime = Math.ceil((new Date()).getTime() / 1000) // the current time in seconds
   var expirationTime = currentTime + exp
 
-  const jwtHeader = Object.assign(header, { typ: 'JWT', alg })
+  const jwtHeader = Object.assign(header, { typ: 'JWT', alg, kid })
 
   const jwtBody = Object.assign(payload,
     {
@@ -69,7 +70,7 @@ function jwtSign (jwk = '', payload = {}, header = {}, exp = 600, alg = DEFAULT_
   try {
     valStringOrObject(jwk, 'jwk')
     const prvKey = rs.KEYUTIL.getKey(jwk)
-    return createJws(prvKey, payload, header, exp, alg)
+    return createJws(prvKey, payload, header, exp, alg, jwk.kid)
   } catch (err) {
     const msg = (typeof err === 'string') ? err : err.message
     throw new Error(`[jwtSign] ${msg}`)
