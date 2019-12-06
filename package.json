@@ -16,7 +16,7 @@
     "nanoid": "^2.1.7"
   },
   "devDependencies": {
-    "browserify": "^16.npm 5.0",
+    "browserify": "^16.5.0",
     "jsonwebtoken": "^8.5.1",
     "jwk-to-pem": "^2.0.2",
     "mocha": "^6.2.2",
