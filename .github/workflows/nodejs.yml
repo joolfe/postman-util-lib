@@ -1,4 +1,4 @@
-name: Node CI
+name: Build Node
 
 on: [push]
 
@@ -24,3 +24,11 @@ jobs:
         npm test
       env:
         CI: true
+    - name: Upload coverage to Codecov  
+      uses: codecov/codecov-action@v1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        file: ./coverage/lcov.info
+        flags: unittests
+        name: codecov-upload
+        fail_ci_if_error: true
