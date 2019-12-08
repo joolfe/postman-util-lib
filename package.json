@@ -4,7 +4,7 @@
   "description": "",
   "main": "lib.js",
   "scripts": {
-    "test": "nyc npm run test:unit",
+    "test": "nyc --reporter=lcov --reporter=text npm run test:unit",
     "test:unit": "mocha test/lib-test.js",
     "build": "browserify -p tinyify src/lib.js > docs/dist/bundle.js -s pmlib",
     "dev": "npm run build && node index.js"
