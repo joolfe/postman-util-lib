@@ -132,7 +132,7 @@ function clientAssertPrivateKey (jwk, clientID, aud, exp = 600, alg = DEFAULT_AL
 
 /**
  * Generate a signed jwt for use 'client_secret_jwt' client authentication as describe in Section 9 of
- * OIDC https://openid.net/specs/openid-connect-core-1_0.html 
+ * OIDC https://openid.net/specs/openid-connect-core-1_0.html
  * @param {*} secret A client secret to sign the JWT
  * @param {*} clientID The client_id of the OAuth Client.
  * @param {*} aud The aud (audience) Claim. Value that identifies the Authorization Server as an intended audience.

@@ -7,17 +7,31 @@
 
 Postman-util-lib is a JavaScript library bundle to squeeze Postman script allowing you to easy use lot of cryptography method from `Pre-request Script` and `Tests` tabs in Postman.
 
+# DEVELOPMENT INSTRUCTIONS
+
+For develop in local please use:
+
+- Node.js v10.15.3 or higher
+- [Standard JS](https://standardjs.com/) rules to maintain clean code.
+
+Use the scripts in `package.json`:
+
+- `test:unit`: Run mocha unit test.
+- `test:lint`: Execute unit test plus standard rules check.
+- `test`: Execute `test:lint` plus code coverage.
+- `build`: Create a browserify version of the lib in `docs/disct`
+- `dev`: Run build script and start a dev server in localhost.
+
+Deployment is just push the changes to the git repo and will be deployed into github pages, also `Github Actions` will be executed to build, test and coverage.
+
 # ROADMAP
 
-- Can i test with newman and a postman collection?
+- Create a postman test collection
+- Run with newman in local
+- Put a github actions for newman?
+- Husky for avoid errors when push from local?
 
-# Pending Docs
-
-- Create gifs to show how to use it.
-- Put especial words or something
-- Create developer/internal docs about how to compile and everything....
-
-# Tags
+# TAGS
 
 `Nodejs` `Javascript` `Jeckyll` `Mocha` `Postman` `Crypto` `Newman`
 
