@@ -1,0 +1,119 @@
+{
+	"info": {
+		"_postman_id": "cc3070e2-efdc-4c7a-9fc0-7b4da02afc2f",
+		"name": "Postman Utility Lib Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Lib Integration Tests",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "469df052-1d9f-40da-8e22-a78c68e22111",
+						"exec": [
+							"pm.test(\"Status code should be 200\", () => {",
+							"    pm.response.to.have.status(200)",
+							"})",
+							"",
+							"pm.test(\"Should return something\", () => {",
+							"    pm.expect(pm.response.responseSize).to.not.be.eql(0)",
+							"})",
+							"    ",
+							"// Loading the library",
+							"eval(responseBody)",
+							"    ",
+							"pm.test(\"PKCE should work correctly\", () => {",
+							"    const challenge = pmlib.pkceChallenge()",
+							"    pm.expect(challenge).to.be.an('object').that.has.all.keys('code_challenge', 'code_challenge_method', 'code_verifier')",
+							"    pm.expect(challenge.code_challenge).to.have.lengthOf(43)",
+							"    pm.expect(challenge.code_verifier).to.have.lengthOf(43)",
+							"    pm.expect(challenge.code_challenge_method).to.be.eql('S256')",
+							"})",
+							"",
+							"pm.test(\"SHA-256 should work correctly\", () => {",
+							"    const sha256String = pmlib.sha256('example string')",
+							"    pm.expect(sha256String).to.be.eql('aedfb92b3053a21a114f4f301a02a3c6ad5dff504d124dc2cee6117623eec706')",
+							"})",
+							"",
+							"pm.test(\"Client assertion 'client_secret_jwt' should work\", () => {",
+							"    const clientSecretJwt = pmlib.clientAssertSecret('mySecret', 'myIss', 'myAUD')",
+							"    pm.expect(clientSecretJwt).to.not.have.lengthOf(0)",
+							"})",
+							"",
+							"const jwk = {",
+							"  \"e\": \"AQAB\",",
+							"  \"n\": \"7-ql2BxRpd5PEKs9h6oouoLJSK1PZgElYnHtC1EvtBcJ5rsPhRLQ95SFuzMVuPzrRymTx2DAiYrFryNNGvYgGMjwjZZ6gL0FebxGooY9P_voShuzNOg22n9aayqM7U61pmfSsu_0Gm8ZFu0hZa4VT7xn_LFIZnB_BTwG9EZtIwyGdHitMcakvdgOjTTmLqzdSjqie_7IHJrLb9JFPLrYsUDGU3v7U4joKwyZWCbaBRLrhmsAxbKhfGBA-zdSAMVtKTuu4HuQ8gnEmYpdL2wZjLH1EpxZpl_dbojzKqqGqDW7inz1SE1y4A86DE4kIzVWMqltxeMpamGOyBtSKYp5Xw\",",
+							"  \"d\": \"7yt3myJYDse5AEAFfdoW8h_xcx862NBpqWMzUSXlLV4OQ9LVXO7uHPIWAxGhJSIVloKPTKJaLoOGINtLQYZ9ZtfiXvPVOcO10q7rp5e1NbT10_MbSrH4BQgSZmUrymK92Z8Ev9dP_I4mb-GDeq75ldyXuaQuLdkV92zo7dnLcLRciQsFsBirOOICp0RjGdCgoAZMfM5WIvRJ7XYsXP2qGMEOdyeTo3MGWZIYJGSOLvh1OMsWrrqQmPPuh0qnWj5IccJsWQv8oSNPVah9K0b0Zgv5-anr6ZkR33_vr6nK7SiZNIAH48mOrGVKGEyAZGsgoyrNhSVOg39l5jFwkamHUQ\",",
+							"  \"p\": \"_kSDQ1oCxkTAUjSfsiZ-lj_ineDSTbcfYEP1WyhnNwfUbVP33QYAGg8f36xL65JKZAo4GaZvsVytaqiOiU5u1FFh0Tm7sRU6qG-YjYM0pynsptpQgh4p9mQ0WoURmXoryzIrqq8TRQA871gql14HVavydUrd1Gz10QJkn5cqhJk\",",
+							"  \"q\": \"8Y0at7FhEtALdBH-L-m2Y4hI9iecA-Y6FXspsiPN4ILXmdO2V1W7pJ9uj-pBt2CWdZbBptd4w3rHiECHOXDYBsn-AjRDwcPRWnhiL_TM4TSlWtyuTAcRg7b_tSWY8ptkIH9nDHYi5_VtdkIWg74Z3oFxWZYS9SKbURnzJ8AxMLc\",",
+							"  \"dp\": \"papmC9_9psjstaLr2dsS5zpAoLT20QPbQZGFrxsoBMbpNUJcYHmkX1YzYjyUSqxKI9w0qSGz7E-B_dhM5lFgDJ3pqbSAAeTfDxeGwc0W5UN_mUbs5ZpZpNus8L16thDPr9jEcrUXTQHWsesz9OOiy8L4ekuJNPq5PrDcds67OSE\",",
+							"  \"dq\": \"SZXf5sf9t5pzcsesdPIw4v94oqyMZc-0MCkWGbO4m0Wg4rbRXKe8gzkimGsX3AJrs6Tal7YajwqPUJ2_1CrhVKgiXo-HeLbrxzDXUJ6174F3QkfqPTUGC-cq3Qd4IahfB1tojC5NEfb9gsI9U6MNBHDQlCcY3V7OjBVostpk4d8\",",
+							"  \"qi\": \"M76jNmuSeQHB5niL0mhtOazj1gQ_gI69yqoCDKgG9lbb1-C1uQ_bpozc9gTwvG0OZ_iqcJ_vNm_vj3d4-2_g8Njm8KTdzILLSw8v4aV-EGijyHPJtJii91SyZY39ZDT-SaWIXAL55aIF5ZfsBhmpwcXK9iCLjy1z2sIjzo023SU\",",
+							"  \"kty\": \"RSA\",",
+							"  \"kid\": \"259337db-7412-45da-ad86-b63c97796588\",",
+							"  \"use\": \"sig\"",
+							"}",
+							"",
+							"pm.test(\"Client assertion 'private_key_jwt' should work\", () => {",
+							"    const privateKeyJwt = pmlib.clientAssertPrivateKey(jwk, 'myIss', 'myAUD')",
+							"    pm.expect(privateKeyJwt).to.not.have.lengthOf(0)",
+							"})",
+							"",
+							"pm.test(\"Create a signed jwt should work\", () => {",
+							"    const jws = pmlib.jwtSign(jwk, { aud: 'myAUD', iss: 'myIss', claim: 'my CustomClaim' })",
+							"    pm.expect(jws).to.not.have.lengthOf(0)",
+							"})",
+							"",
+							"pm.test(\"Use 'jsrsasign' library should work\", () => {",
+							"    const base64String = pmlib.rs.stob64u('My amazing string')",
+							"    pm.expect(base64String).to.be.eql('TXkgYW1hemluZyBzdHJpbmc')",
+							"})",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "4a1873e6-cac6-454b-b008-67abd814b0b1",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://joolfe.github.io/postman-util-lib/dist/bundle.js",
+					"protocol": "https",
+					"host": [
+						"joolfe",
+						"github",
+						"io"
+					],
+					"path": [
+						"postman-util-lib",
+						"dist",
+						"bundle.js"
+					]
+				},
+				"description": "Integration Test to test directly against the dist in gothubpages"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

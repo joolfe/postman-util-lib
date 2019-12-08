@@ -80,8 +80,8 @@ If you open the [Postman console](https://learning.getpostman.com/docs/postman/s
 Generate a "S256" Proof Key for Code Exchange (PKCE) as described in [RFC7636](https://tools.ietf.org/html/rfc7636), return an object like:
 ```javascript
 {
-    code_challenge: "JT4SVOGg1mUhv8QNz3_PIYdgEJxy6tUyx9qAR_GWbPE"
-    code_challenge_method: "S256"
+    code_challenge: "JT4SVOGg1mUhv8QNz3_PIYdgEJxy6tUyx9qAR_GWbPE",
+    code_challenge_method: "S256",
     code_verifier: "ATT6CIewaFJnsachPeUfqD-5r7xj4g5MHE0qvDDP2T4"
 }
 ```

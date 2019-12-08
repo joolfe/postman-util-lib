@@ -21,6 +21,7 @@
     "jsonwebtoken": "^8.5.1",
     "jwk-to-pem": "^2.0.2",
     "mocha": "^6.2.2",
+    "newman": "^4.5.7",
     "nyc": "^14.1.1",
     "sinon": "^7.5.0",
     "standard": "^14.3.1",
