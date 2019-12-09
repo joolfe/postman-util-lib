@@ -3,11 +3,10 @@ name: Test
 on: page_build
 
 jobs:
-  build:
-
+  newman:
     runs-on: ubuntu-latest
-    
     steps:
-
-    - name: Run a one-line script
-      run: echo You triggered a page build!
+      - uses: actions/checkout@master
+      - uses: matt-ball/newman-action@master
+        with:
+          collection: test/postman/pmlib_test_collection.json
