@@ -21,15 +21,15 @@ Use the scripts in `package.json`:
 - `test`: Execute `test:lint` plus code coverage.
 - `build`: Create a browserify version of the lib in `docs/disct`
 - `dev`: Run build script and start a dev server in localhost.
+- `test:e2e`: Run a newman test using a colleciton agains the deployed github pages.
 
-Deployment is just push the changes to the git repo and will be deployed into github pages, also `Github Actions` will be executed to build, test and coverage.
+Deployment is just push the changes to the git repo and will be deployed into github pages.
 
-# ROADMAP
+There are two configured `Github Actions`:
+- `Build Node`: on `push` do npm install, test and upload coverage in Node.js 10 and 12.
+- `Test`: on `page_build` execute newman e2e test agains the deployed distribution.
 
-- Create a postman test collection
-- Run with newman in local
-- Put a github actions for newman?
-- Husky for avoid errors when push from local?
+Husky is setup to avoid push incorrect content ot the git.
 
 # TAGS
 
