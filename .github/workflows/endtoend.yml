@@ -1,0 +1,13 @@
+name: Test
+
+on: page_build
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+
+    - name: Run a one-line script
+      run: echo You triggered a page build!
