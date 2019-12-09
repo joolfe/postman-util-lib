@@ -7,7 +7,7 @@
     "test": "nyc --reporter=lcov --reporter=text npm run test:lint",
     "test:lint": "standard 'src/*.js' && npm run test:unit",
     "test:unit": "mocha test/lib-test.js",
-    "test:e2e": "node test/e2e.js",
+    "test:e2e": "node e2e-test/e2e.js",
     "build": "browserify -p tinyify src/lib.js > docs/dist/bundle.js -s pmlib",
     "dev": "npm run build && node index.js"
   },

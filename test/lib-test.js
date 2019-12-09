@@ -9,5 +9,5 @@ describe('Postman Library unit test', function () {
   require('./clientAssertSecret')
   require('./pkceChallenge')
   require('./sha256')
-  require('./it-server')
+  require('./builtin-server')
 })
