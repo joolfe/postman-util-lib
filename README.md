@@ -5,7 +5,7 @@
 [![codecov](https://img.shields.io/codecov/c/github/joolfe/postman-util-lib?logo=codecov&style=flat-square)](https://codecov.io/gh/joolfe/postman-util-lib)
 ![build](https://img.shields.io/badge/Postman-%3E=7.0.9-green?logo=postman&style=flat-square&color=FF6C37)
 
-Postman-util-lib is a JavaScript library bundle to squeeze Postman script allowing you to easy use lot of cryptography method from `Pre-request Script` and `Tests` tabs in Postman.
+Postman-util-lib is a JavaScript library bundle to squeeze Postman script allowing you to easily use a lot of cryptography method from `Pre-request Script` and `Tests` tabs in Postman.
 
 # DEVELOPMENT INSTRUCTIONS
 
@@ -21,15 +21,15 @@ Use the scripts in `package.json`:
 - `test`: Execute `test:lint` plus code coverage.
 - `build`: Create a browserify version of the lib in `docs/disct`
 - `dev`: Run build script and start a dev server in localhost.
-- `test:e2e`: Run a newman test using a colleciton agains the deployed github pages.
+- `test:e2e`: Run a newman test using a collection against the deployed bundle in github pages.
 
 Deployment is just push the changes to the git repo and will be deployed into github pages.
 
 There are two configured `Github Actions`:
 - `Build Node`: on `push` do npm install, test and upload coverage in Node.js 10 and 12.
-- `Test`: on `page_build` execute newman e2e test agains the deployed distribution.
+- `Test`: on `page_build` execute newman e2e test against the deployed distribution.
 
-Husky is setup to avoid push incorrect content ot the git.
+Husky is configured to avoid push incorrect content to git.
 
 # TAGS
 
