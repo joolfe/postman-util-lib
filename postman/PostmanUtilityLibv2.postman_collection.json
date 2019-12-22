@@ -101,6 +101,25 @@
 							"// Use 'jsrsasign' library",
 							"const base64String = pmlib.rs.stob64u('My amazing string')",
 							"console.log('Url Base64 string: ' + base64String)",
+							"",
+							"",
+							"// RSAOAEP signature example",
+							"const pubkey = '-----BEGIN PUBLIC KEY-----\\n' +",
+							"'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAstXEkU/agbNkQgh6a9DV\\n' +",
+							"'C/WXGmNy8g+hdTOBhYUk5PfZCwTNt5SCYBLjIPhs2ZRrNuCN3PhwHRQPQOTsS6Nl\\n' +",
+							"'Bzw+SjPVFBhPcbMHbJWnC87Q5ID/uAuwJjcUQXUTVspwIgfRmHvuuT7w7AYnCNvz\\n' +",
+							"'B5TuPj2vVH8rij9BXkAHambaeGG7L10MPeUiVU6M0F/QKCJhEWAYGEt4NffSXETx\\n' +",
+							"'zHSl8nyXxVJfnjxVhnZyZVXTIpLwvRy04hnkAoFexh7npRtnQdsLuIHtaJsm7gFY\\n' +",
+							"'mxhr3Nxbh9p1pC7fHpJ+jMcxAAhA07WqYf6lOsxXHfPav1FEMX214YTsKTw68xqo\\n' +",
+							"'DwIDAQAB\\n' +",
+							"'-----END PUBLIC KEY-----\\n'",
+							"const fileContent = 'My file content comes here...'",
+							"var keyObj = pmlib.rs.KEYUTIL.getKey(pubkey)",
+							"const encHex = pmlib.rs.KJUR.crypto.Cipher.encrypt(fileContent, keyObj, 'RSAOAEP')",
+							"console.log(encHex)",
+							"",
+							"",
+							"",
 							""
 						],
 						"type": "text/javascript"
@@ -135,11 +154,15 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
 				"url": "https://joolfe.github.io/postman-util-lib/dist/fakeresponse.json",
 				"description": "Some usefull example about how to use the library."
 			},
 			"response": []
 		}
-	]
+	],
+	"protocolProfileBehavior": {}
 }
