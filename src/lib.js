@@ -154,6 +154,7 @@ function clientAssertSecret (secret, clientID, aud, exp = 600, alg = DEFAULT_ALG
 
 module.exports = {
   pkceChallenge,
+  createJws,
   jwtSign,
   jwtVerify,
   sha256,
