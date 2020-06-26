@@ -3,7 +3,7 @@
 const fs = require('fs')
 
 const JWK_KEY = require('./resources/jwk.json')
-const JWK_PUBLIC_KEY = require('./resources/jwkPublic.json')
+const JWK_PUBLIC_KEY = require('./resources/publicKey.json')
 const PEM_PUB_KEY = fs.readFileSync('./test/resources/publicKey.pem', 'utf8')
 
 const CLIENT_ID = 'bb2d95df-ae2e-4f22-a6ab-958d3591f1cf'
