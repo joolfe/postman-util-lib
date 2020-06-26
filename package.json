@@ -14,16 +14,18 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "jsrsasign": "^8.0.12",
+    "jsrsasign": "^8.0.20",
     "nanoid": "^2.1.7"
   },
   "devDependencies": {
+    "@commitlint/cli": "^9.0.1",
+    "@commitlint/config-conventional": "^9.0.1",
     "browserify": "^16.5.0",
     "husky": "^3.1.0",
     "jsonwebtoken": "^8.5.1",
     "jwk-to-pem": "^2.0.2",
-    "mocha": "^6.2.2",
-    "newman": "^4.5.7",
+    "mocha": "^8.0.1",
+    "newman": "^5.1.0",
     "nyc": "^14.1.1",
     "sinon": "^7.5.0",
     "standard": "^14.3.1",
@@ -44,7 +46,13 @@
   },
   "husky": {
     "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-push": "npm test"
     }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   }
 }
