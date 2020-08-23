@@ -102,7 +102,7 @@ Verify that a [JWT](https://tools.ietf.org/html/rfc7519) is valid (time) and cor
 in case of not valid jwt the method will throw and Error.
 
 * **jwt:** (String) The jwt in string format to be verified.
-* **pubKey:** (String|Object) Public key string to verify the signature. A string for PEM format or an Object for JWK key.
+* **pubKey:** (String or Object) Public key string to verify the signature. A string for PEM format or an Object for JWK key.
 * **algorithm:** (String) Jwt should be signed with this algorithm. Default value 'RS256'
 
 In case of success the method returns an object like:
