@@ -18,14 +18,14 @@
     "nanoid": "^2.1.7"
   },
   "devDependencies": {
-    "@commitlint/cli": "^9.0.1",
-    "@commitlint/config-conventional": "^9.0.1",
+    "@commitlint/cli": "^10.0.0",
+    "@commitlint/config-conventional": "^10.0.0",
     "browserify": "^16.5.0",
     "husky": "^3.1.0",
     "jsonwebtoken": "^8.5.1",
     "jwk-to-pem": "^2.0.2",
-    "mocha": "^8.0.1",
-    "newman": "^5.1.0",
+    "mocha": "^8.1.1",
+    "newman": "^5.1.2",
     "nyc": "^14.1.1",
     "sinon": "^7.5.0",
     "standard": "^14.3.1",
