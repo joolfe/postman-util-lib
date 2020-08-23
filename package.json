@@ -9,11 +9,14 @@
     "test:unit": "mocha test/lib-test.js",
     "test:e2e": "node e2e-test/e2e.js",
     "build": "browserify -p tinyify src/lib.js > docs/dist/bundle.js -s pmlib",
-    "dev": "npm run build && node index.js"
+    "dev": "npm run build && node index.js",
+    "changelog:all": "conventional-changelog --config ./changelog.config.js -i CHANGELOG.md -s -r 0",
+    "changelog": "conventional-changelog --config ./changelog.config.js -i CHANGELOG.md -s"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "conventional-changelog-cli": "^2.1.0",
     "jsrsasign": "^8.0.20",
     "nanoid": "^2.1.7"
   },
