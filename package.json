@@ -1,6 +1,6 @@
 {
   "name": "script-utils",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Postman security utils",
   "main": "lib.js",
   "scripts": {
@@ -16,22 +16,22 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "conventional-changelog-cli": "^2.1.0",
-    "jsrsasign": "^8.0.20",
-    "nanoid": "^2.1.7"
+    "conventional-changelog-cli": "^2.1.1",
+    "jsrsasign": "^10.2.0",
+    "nanoid": "^3.1.22"
   },
   "devDependencies": {
-    "@commitlint/cli": "^10.0.0",
-    "@commitlint/config-conventional": "^10.0.0",
+    "@commitlint/cli": "^12.1.1",
+    "@commitlint/config-conventional": "^12.1.1",
     "browserify": "^16.5.0",
     "husky": "^3.1.0",
     "jsonwebtoken": "^8.5.1",
-    "jwk-to-pem": "^2.0.2",
-    "mocha": "^8.1.1",
+    "jwk-to-pem": "^2.0.5",
+    "mocha": "^8.3.2",
     "newman": "^5.1.2",
-    "nyc": "^14.1.1",
-    "sinon": "^7.5.0",
-    "standard": "^14.3.1",
+    "nyc": "^15.1.0",
+    "sinon": "^10.0.0",
+    "standard": "^16.0.3",
     "supertest": "^4.0.2",
     "tinyify": "^2.5.2"
   },
