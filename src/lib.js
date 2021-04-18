@@ -1,7 +1,7 @@
 'use strict'
 
 const rs = require('jsrsasign')
-const nanoid = require('nanoid/non-secure')
+const { nanoid } = require('nanoid/non-secure')
 const { valStringOrObject, valString, valObject, valNumber } = require('./validate.js')
 
 const SHA256 = 'sha256'
