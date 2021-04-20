@@ -37,7 +37,7 @@ Just download the [example postman collection](#postman-collection) in your comp
 
 If you can't import the [example postman collection](#postman-collection)  or simply you want to do the process by your selve, don't worry is also very easy :relieved:.
 
-1. Navigate to the [bundle url](https://joolfe.github.io/postman-util-lib/bundle.js) in your web browser and copy the content of the page.
+1. Navigate to the [bundle url](https://joolfe.github.io/postman-util-lib/dist/bundle.js) in your web browser and copy the content of the page.
 2. In your Postman app open the "Manage Environments" screen clicking in the cogs icon located in the top right corner of the principal postman screen.
 3. Once in "MANAGE ENVIRONMENTS" screen click on the "Globals" button. You will see a list of defined global variables.
 4. Create a new variable in the table, choose a name (for example `pmlib_code`) and put in the first column, paste the bundle text in "INITIAL VALUE" column, and save using the button on the bottom.
