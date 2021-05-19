@@ -22,6 +22,12 @@ describe('jwtSign()', function () {
     assert.strictEqual(decodeJwt.header.kid, JWK_KEY.kid)
   })
 
+  it('Should allow custom typ in the header', function () {
+    const jwt = lib.jwtSign(JWK_KEY, {}, { typ: 'foo' })
+    const decodeJwt = jsonwebtoken.decode(jwt, { complete: true })
+    assert.strictEqual(decodeJwt.header.typ, 'foo')
+  })
+
   it('Should generate signed jwt correctly with all fields', function () {
     const jwt = lib.jwtSign(JWK_KEY, JWT_PAYLOAD, { test: 'here' }, 10, 'RS384')
     const decodeJwt = jsonwebtoken.verify(jwt, PEM_PUB_KEY)
