@@ -1,3 +1,29 @@
+## [1.4.0](https://github.com/joolfe/postman-util-lib/compare/1.1.1...1.4.0) (2022-01-15)
+
+
+### Features
+
+* build bundle again with new libraries ([409f44c](https://github.com/joolfe/postman-util-lib/commit/409f44c1813a39e227395c6d7dc629a44f0af8a7))
+
+
+### Bug Fixes
+
+* security vulnerabilities fix ([71f5733](https://github.com/joolfe/postman-util-lib/commit/71f5733b6132286b4d37b2a06f5af83f51cfad6c))
+
+
+### Documentation
+
+* update CHANGELOG ([4193e00](https://github.com/joolfe/postman-util-lib/commit/4193e00e2068f035795f3fc2d75363bfb3ddeaa5))
+* update CHANGELOG ([fde1fb7](https://github.com/joolfe/postman-util-lib/commit/fde1fb7bf69a8aee30b3c311858998741141f06d))
+
+
+### Build System
+
+* changelog added ([21ab32f](https://github.com/joolfe/postman-util-lib/commit/21ab32fd2624fc14352827efd3927a49710d1b81))
+* update multiples deps to avoid vulnerabilities ([9ca0512](https://github.com/joolfe/postman-util-lib/commit/9ca05128439f29a5109c898d8035a268b80c4bfb))
+* update version and build code ([6c207bf](https://github.com/joolfe/postman-util-lib/commit/6c207bf3e10a3bbe734be18ba65051872aa86de0))
+* version updated ([f4e158e](https://github.com/joolfe/postman-util-lib/commit/f4e158e0e0205aae2fd4ae5bd90174a2f3b3fa18))
+
 ## [1.3.0](https://github.com/joolfe/postman-util-lib/compare/1.1.1...1.3.0) (2021-05-20)
 
 
