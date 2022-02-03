@@ -28,13 +28,13 @@ function createJws (secret, payload, header, exp, alg, kid) {
 
   const jwtHeader = Object.assign({ typ: 'JWT' }, header, { alg, kid })
 
-  const jwtBody = Object.assign(payload,
+  const jwtBody = Object.assign(
     {
       iat: currentTime - 5,
       nbf: currentTime - 5,
       exp: expirationTime,
       jti: nanoid()
-    })
+    }, payload)
 
   const sHeader = JSON.stringify(jwtHeader)
   const sPayload = JSON.stringify(jwtBody)
@@ -160,5 +160,6 @@ module.exports = {
   sha256,
   clientAssertPrivateKey,
   clientAssertSecret,
-  rs
+  rs,
+  nanoid
 }
