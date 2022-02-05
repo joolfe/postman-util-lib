@@ -40,6 +40,23 @@ describe('jwtSign()', function () {
     assert(decodeJwt.jti)
   })
 
+  it('Should allow overriding essential JWT claims', function () {
+    var now = Math.ceil((new Date()).getTime() / 1000) // the current time in seconds
+    const jti = lib.nanoid()
+    Object.assign(JWT_PAYLOAD, {
+        iat: now,
+        nbf: now - 5,
+        exp: now + 5,
+        jti: jti
+    })
+    const jwt = lib.jwtSign(JWK_KEY, JWT_PAYLOAD, { test: 'here' }, 10, 'RS384')
+    const decodeJwt = jsonwebtoken.verify(jwt, PEM_PUB_KEY)
+    assert.strictEqual(decodeJwt.iat, now)
+    assert.strictEqual(decodeJwt.nbf, now - 5)
+    assert.strictEqual(decodeJwt.exp, now + 5)
+    assert.strictEqual(decodeJwt.jti, jti)
+  })
+
   it('Should fail when no jwk provided', function () {
     assert.throws(
       () => lib.jwtSign(),
